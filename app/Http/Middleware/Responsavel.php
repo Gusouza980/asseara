@@ -16,7 +16,7 @@ class Responsavel
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!session()->get("responsavel")){
+        if(!session()->get("engenheiro")){
             return redirect()->route("site.login");
         }
         return $next($request);

@@ -23,14 +23,14 @@ class SiteController extends Controller
         if($engenheiro){
             if(Hash::check($request->senha, $engenheiro->senha)){
                 session()->put(["engenheiro" => $engenheiro->id]);
-                echo "deu bom";
+                return redirect()->route("site.index");
             }else{
                 session()->flash("erro", "Senha incorreta!");
                 return redirect()->back();
             }
         }else{
             session()->flash("erro", "O CPF não está ligado a um usuário aprovado!");
-            return redirect()->route("site.index");
+            return redirect()->back();
         }
     }
 
