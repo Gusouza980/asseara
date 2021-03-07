@@ -18,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::get('/{pagina}', [App\Http\Controllers\PdfController::class, 'pagina1']);
-Route::get('/', [App\Http\Controllers\SiteController::class, 'index'])->name("site.index");
+
 Route::get('/login', [App\Http\Controllers\SiteController::class, 'login'])->name("site.login");
 Route::post('/logar', [App\Http\Controllers\SiteController::class, 'logar'])->name("site.logar");
 Route::get('/registro', [App\Http\Controllers\SiteController::class, 'registro'])->name("site.registro");
 Route::post('/registrar', [App\Http\Controllers\SiteController::class, 'registrar'])->name("site.registrar");
-Route::post('/pdf/criar', [App\Http\Controllers\PdfController::class, 'criar'])->name("pdf.criar");
+
+Route::middleware(['responsavel'])->group(function () {
+    Route::get('/', [App\Http\Controllers\SiteController::class, 'index'])->name("site.index");
+    Route::post('/pdf/criar', [App\Http\Controllers\PdfController::class, 'criar'])->name("pdf.criar");
+});

@@ -1,3 +1,8 @@
+@php
+
+$responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
+
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +12,7 @@
     <title>Document</title>
 </head>
 <body>
+    <img style="position: absolute; top: 50px; right: 30px; width: 180px;" src="{{asset('site/images/asseara-logo.png')}}" alt="">
     <div style="position: absolute; top: 180px; width: 100%; background-color: #0060A8; height: 260px; text-align: right; padding-right: 30px;">
         <h1 style="color: white; font-family: Calibri, sans-serif; font-size: 35px; font-weight: bold; position: absolute; top: 170px; right: 30;">LIVRO DE ORDEM</h1>
         <h3 style="color: white; font-family: Calibri, sans-serif; font-size: 11px;  position: absolute; top: 230px; right: 30;">CADERNETA DE OBRAS do Município de Alfenas (atende a Lei Municipal 3839/2005 e a Res. Confea 1094/2017)</h3>
@@ -36,9 +42,9 @@
     <span style="font-family: Calibri, sans-serif;font-size: 11px; position: absolute; top: 825px; left: 5px;">Dispõe sobre a adoção do Livro de Ordem de obra e serviços das profissões abrangidas pelo Sistema Confea/Crea.</span>
 
     <div style="position: absolute; top: 850px; width: 100%; background-color: #F2F2F2; height: 150px; text-align: right; padding-right: 30px;">
-        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 30px; left: 30px;">Obra/Serviço: Elétrica - Eletrônica e Comunicação - Segurança Eletrônica - Remota</span>
-        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 70px; left: 30px;">Proprietário: Nome do Proprietário</span>
-        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 110px; left: 30px;">Responsável Técnico: Nome do Profissional Responsável Técnico</span>
+        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 30px; left: 30px;">{{$atuacao}}</span>
+        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 70px; left: 30px;">Proprietário: {{$nome_proprietario}}</span>
+        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 110px; left: 30px;">Responsável Técnico: {{$responsavel->nome}}</span>
     </div>
 
 </body>

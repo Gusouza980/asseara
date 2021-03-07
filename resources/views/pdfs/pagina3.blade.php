@@ -1,3 +1,7 @@
+@php
+\Date::setLocale('pt-br');
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +13,7 @@
 <body>
 
     <span style="font-family: Calibri, sans-serif; font-size: 25px; font-weight: bold; position: absolute; top: 0px; left: 250px;">LIVRO DE ORDEM</span>
+    <img style="position: absolute; top: 0px; right: 30px; width: 110px;" src="{{asset('site/images/asseara-logo.png')}}" alt="">
 
     <div style="font-family: Calibri, sans-serif; font-size: 25px; font-weight: bold; position: absolute; top: 80px; left: 0px; height: 60px; width: 70%; border: 1px solid #D6D6D6;">
         <span style="font-family: Calibri, sans-serif; font-size: 19px; font-weight: bold; position: absolute; top: 20px; left: 220px;">Recibo</span>
@@ -16,10 +21,11 @@
 
     <div style="font-family: Calibri, sans-serif; font-size: 25px;position: absolute; top: 80px; left: 530px; height: 60px; width: 100%; border: 1px solid #D6D6D6;">
         <span style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 5px; left: 5px;">Livro n°</span>
-        <span style="font-family: Calibri, sans-serif; font-size: 15px; font-weight: bold; position: absolute; top: 35px; left: 35px; color: #C00000;">10101010 ART</span>
+        <span style="font-family: Calibri, sans-serif; font-size: 15px; font-weight: bold; position: absolute; top: 35px; left: 35px; color: #C00000;">{{$rt}} {{config("globals.rts")[$conselho]}}</span>
     </div>
 
     <div style="font-family: Calibri, sans-serif; position: absolute; top: 175px; width: 100%;">
+        <img style="position: absolute; top: 0px; left: 30px; width: 130px;" src="{{asset('site/images/asseara-logo.png')}}" alt="">
         <span style="font-family: Calibri, sans-serif;  font-size: 15px; font-weight: bold; position: absolute; top: 25px; left: 40%">CNPJ: 25.658.931/0001-02</span>
         <div style="font-family: Calibri, sans-serif; font-size: 25px;position: absolute; top: 0px;  left: 530px; height: 60px; width: 100%; border: 1px solid #D6D6D6; background-color: #F2F2F2;">
             <span style="font-family: Calibri, sans-serif; font-size: 19px; font-weight: bold; position: absolute; top: 20px; left: 15px; color: black;">R$</span>
@@ -40,7 +46,7 @@
 
     <div style="font-family: Calibri, sans-serif; position: absolute; top: 350px; width: 100%; text-align: center;">
         <span style="font-family: Calibri, sans-serif; font-size: 15px; position: absolute; top: 25px; left: 35%;">
-            Alfenas - MG, 09 / fevereiro / 2019
+            Alfenas - MG, {{\Date::now()->format('d / F / Y')}}
         </span>
     </div>
 
@@ -61,10 +67,11 @@
 
     <div style="font-family: Calibri, sans-serif; font-size: 25px;position: absolute; top: 600px; left: 530px; height: 60px; width: 100%; border: 1px solid #D6D6D6;">
         <span style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 5px; left: 5px;">Livro n°</span>
-        <span style="font-family: Calibri, sans-serif; font-size: 15px; font-weight: bold; position: absolute; top: 35px; left: 35px; color: #C00000;">10101010 ART</span>
+        <span style="font-family: Calibri, sans-serif; font-size: 15px; font-weight: bold; position: absolute; top: 35px; left: 35px; color: #C00000;">{{$rt}} {{config("globals.rts")[$conselho]}}</span>
     </div>
 
     <div style="font-family: Calibri, sans-serif; position: absolute; top: 695px; width: 100%;">
+        <img style="position: absolute; top: 0px; left: 30px; width: 130px;" src="{{asset('site/images/asseara-logo.png')}}" alt="">
         <span style="font-family: Calibri, sans-serif;  font-size: 15px; font-weight: bold; position: absolute; top: 25px; left: 40%">CNPJ: 25.658.931/0001-02</span>
         <div style="font-family: Calibri, sans-serif; font-size: 25px;position: absolute; top: 0px;  left: 530px; height: 60px; width: 100%; border: 1px solid #D6D6D6; background-color: #F2F2F2;">
             <span style="font-family: Calibri, sans-serif; font-size: 19px; font-weight: bold; position: absolute; top: 20px; left: 15px; color: black;">R$</span>
@@ -85,7 +92,7 @@
 
     <div style="font-family: Calibri, sans-serif; position: absolute; top: 870px; width: 100%; text-align: center;">
         <span style="font-family: Calibri, sans-serif; font-size: 15px; position: absolute; top: 25px; left: 35%;">
-            Alfenas - MG, 09 / fevereiro / 2019
+            Alfenas - MG, {{\Date::now()->format('d / F / Y')}}
         </span>
     </div>
 

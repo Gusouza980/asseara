@@ -1,3 +1,9 @@
+@php
+
+$responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
+
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +15,7 @@
 <body>
 
     <span style="font-family: Calibri, sans-serif; font-size: 25px; font-weight: bold; position: absolute; top: 0px; left: 250px;">LIVRO DE ORDEM</span>
+    <img style="position: absolute; top: 0px; right: 30px; width: 110px;" src="{{asset('site/images/asseara-logo.png')}}" alt="">
 
     <div style="font-family: Calibri, sans-serif; font-size: 25px; font-weight: bold; position: absolute; top: 80px; left: 0px; height: 60px; width: 70%; border: 1px solid #D6D6D6;">
         <span style="font-family: Calibri, sans-serif; font-size: 19px; font-weight: bold; position: absolute; top: 20px; left: 150px;">01 - Termo de Abertura</span>
@@ -16,70 +23,70 @@
 
     <div style="font-family: Calibri, sans-serif; font-size: 25px;position: absolute; top: 80px; left: 530px; height: 60px; width: 100%; border: 1px solid #D6D6D6;">
         <span style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 5px; left: 5px;">Livro n°</span>
-        <span style="font-family: Calibri, sans-serif; font-size: 15px; font-weight: bold; position: absolute; top: 35px; left: 35px; color: #C00000;">10101010 ART</span>
+        <span style="font-family: Calibri, sans-serif; font-size: 15px; font-weight: bold; position: absolute; top: 35px; left: 35px; color: #C00000;">{{$rt}} {{config("globals.rts")[$conselho]}}</span>
     </div>
 
     <div style="position: absolute; top: 150px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 18%; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Data Início:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">09/02/2019</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{date('d/m/Y', strtotime($inicio))}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 18%; height: 35px; left: 18%; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Data Conclusão: </span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">09/04/2019</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{date('d/m/Y', strtotime($conclusao))}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 18%; height: 35px; left: 36%; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Seq. ao Livro:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">nº:</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$sequencia}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 18%; height: 35px;  left: 54%; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Conselho Origem:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">CONFEA</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$conselho}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 183px; height: 35px; left: 72%; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Vinculada ao Doc. RT:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">ART N° <span style="">10101010</span></span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{config("globals.rts")[$conselho]}} N° {{$rt}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 190px; left: 40px; width: 662px;">
         <div style="position: absolute; top: 5px; width: 100%; height: 45px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Área Atuação - Sub Área de atuação - Obra/Serviço - Complemento:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 25px; left: 5px; font-weight: bold;">Elétrica - Eletrônica e Comunicação - Segurança Eletrônica - Remota</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 25px; left: 5px; font-weight: bold;">{{$atuacao}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 240px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 380px; height:35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Endereço:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Rua da Obra/Serviço</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$endereco}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height:35px; left: 380px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">N°:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">11</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$numero}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height:35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Bairro:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Jardim da Obra/Serviço</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$bairro}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 280px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 20%; height:35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">CEP:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">37130-000 </span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$cep}} </span>
         </div>
         <div style="position: absolute; top: 5px; width: 30%; height:35px; left: 20%; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Cidade:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Alfenas</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$cidade}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 15%; height:35px; left:50%; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">UF:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">MG</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$uf}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 229px; height:35px; left: 65%; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Quantidade/Unidade:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">10,00 unidades</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$quantidade}} {{$unidade}}</span>
         </div>
     </div>
 
@@ -90,49 +97,49 @@
     <div style="position: absolute; top: 330px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Proprietário:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Nome do Proprietário</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$nome_proprietario}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 220px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">RG:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">M1.234.567 SSP/MG</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$rg_proprietario}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">CPF:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">111.222.333-44</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$cpf_proprietario}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 370px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 380px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Endereço:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Rua do Proprietário</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$endereco_proprietario}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 380px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">N°:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">22</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$numero_proprietario}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Compl.:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Casa</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$complemento_proprietario}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 410px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 190px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Telefone:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">(35) 9 9999-9999</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$telefone_proprietario}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 160px; height: 35px; left: 190px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">CEP:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">37130-000</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$cep_proprietario}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 190px; height: 35px; left: 350px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Cidade:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Alfenas</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$cidade_proprietario}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 120px; height: 35px; left: 541px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">UF:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">MG</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$uf_proprietario}}</span>
         </div>
     </div>
 
@@ -143,60 +150,60 @@
     <div style="position: absolute; top: 460px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 440px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Autor do Projeto:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Nome do Profissional Autor do Projeto</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$nome_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Título:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Engenheiro Eletricista</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$titulo_autor}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 500px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Registro no Conselho nº:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">11111111</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$registro_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 220px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Documento de RT nº:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">ART 123456789</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$documento_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Inscr. Mun.:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">-</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$inscricao_autor}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 540px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 380px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Endereço:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Rua do Profissional Autor do Projeto</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$endereco_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 380px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">N°:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">33</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$numero_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Compl.:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Sala 33</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$complemento_autor}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 580px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 190px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Telefone:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;"> (35) 9 0000-0000</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$telefone_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 160px; height: 35px; left: 190px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">CEP:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">37130-000</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$cep_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 190px; height: 35px; left: 350px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Cidade:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Alfenas</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$cidade_autor}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 120px; height: 35px; left: 541px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">UF:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">MG</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$uf_autor}}</span>
         </div>
     </div>
 
@@ -207,60 +214,60 @@
     <div style="position: absolute; top: 630px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 440px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Responsável Técnico:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Nome do Profissional Responsável Técnico</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->nome}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Título:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Engenheiro Eletricista</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->titulo}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 670px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Registro no Conselho nº:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">11111111</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->registro}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 220px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Documento de RT nº:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">ART 123456789</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{config("globals.rts")[$conselho]}} N° {{$rt}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Inscr. Mun.:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">-</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->inscricao}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 710px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 380px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Endereço:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Rua do Profissional Autor do Projeto</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->rua}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 380px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">N°:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">33</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->numero}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Compl.:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Sala 33</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->complemento}}</span>
         </div>
     </div>
 
     <div style="position: absolute; top: 750px; left: 40px; width: 100%;">
         <div style="position: absolute; top: 5px; width: 190px; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Telefone:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;"> (35) 9 0000-0000</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->telefone}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 160px; height: 35px; left: 190px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">CEP:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">37130-000</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->cep}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 190px; height: 35px; left: 350px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Cidade:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">Alfenas</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->cidade}}</span>
         </div>
         <div style="position: absolute; top: 5px; width: 120px; height: 35px; left: 541px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">UF:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">MG</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->uf}}</span>
         </div>
     </div>
 
@@ -285,7 +292,7 @@
     <div style="position: absolute; top: 930px; left: 430px; width:270px; border-bottom: 1px solid black;">
     </div>
 
-    <span style="font-family: Calibri, sans-serif;position: absolute; top: 935px; left: 40px; font-size: 12px; font-weight: bold;">Nome do Profissional Responsável Técnico</span>
+    <span style="font-family: Calibri, sans-serif;position: absolute; top: 935px; left: 40px; font-size: 12px; font-weight: bold;">{{$responsavel->nome}}</span>
     <span style="font-family: Calibri, sans-serif;position: absolute; top: 950px; left: 40px; font-size: 12px;">Profissional RT:</span>
 
     <span style="font-family: Calibri, sans-serif;position: absolute; top: 935px; left: 430px; font-size: 12px; font-weight: bold;">ASSEARA</span>
