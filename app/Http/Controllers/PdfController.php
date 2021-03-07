@@ -13,8 +13,8 @@ class PdfController extends Controller
         // $pdf->loadHTML(view("templates.pagina" . $pagina)->render() . view("templates.pagina2")->render());
         $data = $request->all();
         $pdf->loadView('pdfs.pagina1', $data)->save('site/pdfs/pagina1.pdf');
-        $pdf->loadView('pdfs.pagina2', $data)->save('site/pdfs/pagina2.pdf');
-        $pdf->loadView('pdfs.pagina3', $data)->save('site/pdfs/pagina3.pdf');
+	$pdf->loadView('pdfs.pagina2', $data)->save('site/pdfs/pagina2.pdf');
+	$pdf->loadView('pdfs.pagina3', $data)->save('site/pdfs/pagina3.pdf');
         $pdf->loadView('pdfs.pagina4', $data)->save('site/pdfs/pagina4.pdf');
         $pdf->loadView('pdfs.pagina5', $data)->save('site/pdfs/pagina5.pdf');
         $pdf->loadView('pdfs.pagina6', $data)->save('site/pdfs/pagina6.pdf');
