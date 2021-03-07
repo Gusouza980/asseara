@@ -30,9 +30,9 @@ class PdfController extends Controller
         $pdf = app()->make('dompdf.wrapper');
         $pdf->loadView('pdfs.pagina7', $data)->save('site/pdfs/pagina7.pdf');
 
-        $fileArray= array("pagina1.pdf","pagina2.pdf","pagina3.pdf","pagina4.pdf");
+        $fileArray= array(public_path() . "/site/pdfs/pagina1.pdf",public_path() . "/site/pdfs/pagina2.pdf",public_path() . "/site/pdfs/pagina3.pdf",public_path() . "/site/pdfs/pagina4.pdf");
 
-        $datadir = "site/pdfs/";
+        $datadir = public_path() . "/site/pdfs/";
         $outputName = $datadir."merged.pdf";
 
         $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$outputName ";
@@ -40,6 +40,7 @@ class PdfController extends Controller
         foreach($fileArray as $file) {
             $cmd .= $file." ";
         }
+	echo $cmd;
         $result = shell_exec($cmd);
         dd($result);
         return $pdf->stream();
