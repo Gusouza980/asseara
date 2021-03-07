@@ -18,7 +18,11 @@ class PdfController extends Controller
         $pdf = app()->make('dompdf.wrapper');
         $pdf->loadView('pdfs.pagina3', $data)->save('site/pdfs/pagina3.pdf');
         $pdf = app()->make('dompdf.wrapper');
-        $pdf->loadView('pdfs.pagina4', $data)->save('site/pdfs/pagina4.pdf');
+	    $pdf->loadView('pdfs.pagina2', $data)->save('site/pdfs/pagina2.pdf');
+	    $pdf = app()->make('dompdf.wrapper');
+	    $pdf->loadView('pdfs.pagina3', $data)->save('site/pdfs/pagina3.pdf');
+        $pdf = app()->make('dompdf.wrapper');
+	    $pdf->loadView('pdfs.pagina4', $data)->save('site/pdfs/pagina4.pdf');
         $pdf = app()->make('dompdf.wrapper');
         $pdf->loadView('pdfs.pagina5', $data)->save('site/pdfs/pagina5.pdf');
         $pdf = app()->make('dompdf.wrapper');
