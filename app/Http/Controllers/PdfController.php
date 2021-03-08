@@ -28,17 +28,18 @@ class PdfController extends Controller
             $fileArray[] = $pdf_directory;
         }
         
-        $outputName = $datadir . date("YmdHis") . ".pdf";
+	$name = date("YmdHis") . ".pdf";
+        $outputName = $datadir . $name;
 
         $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$outputName ";
         //Add each pdf file to the end of the command
         foreach($fileArray as $file) {
             $cmd .= $file." ";
         }
-	    echo $cmd;
+	   // echo $cmd;
         $result = shell_exec($cmd);
         // dd($result);
-        return Storage::download($outputName, "Ordem - " . date("d/m/Y"));
+        return Storage::download("/site/pdfs/".$responsavel->id."/".$name, "Ordem - " . date("d-m-Y") . ".pdf");
         // return $pdf->stream();
     }
 }
