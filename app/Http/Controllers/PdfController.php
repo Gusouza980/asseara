@@ -46,7 +46,9 @@ class PdfController extends Controller
         $ordem->caminho = $caminho;
         $ordem->save();
 
-        dd($result);
+        //dd($result);
+	session()->flash('sucesso', 'Sua emissão está em análise. Aguarde aprovação.');
+	return redirect()->route('site.index');
         // return Storage::download("/site/pdfs/".$responsavel->id."/".$name, "Ordem - " . date("d-m-Y") . ".pdf");
         // return $pdf->stream();
     }
