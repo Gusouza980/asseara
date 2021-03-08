@@ -71,7 +71,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('painel.responsavel.visualizar', ['responsavel' => $responsavel])}}" id="" class="btn btn-primary" role="button">Visualizar</a>
+                                    <a href="{{asset($ordem->caminho)}}" target="_blank" class="btn btn-primary" role="button">Visualizar</a>
                                     @if(!$ordem->aprovado)
                                         <a href="{{route('painel.responsavel.visualizar', ['responsavel' => $responsavel])}}" id="" class="btn btn-success" role="button">Aprovar</a>
                                     @else
