@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use PDF;
 use App\Models\Engenheiro;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Ordem;
+use Illuminate\Support\Str;
 
 class PdfController extends Controller
 {
@@ -28,7 +30,8 @@ class PdfController extends Controller
             $fileArray[] = $pdf_directory;
         }
         
-	$name = date("YmdHis") . ".pdf";
+	    $name = date("YmdHis") . "_" .  Str::random(10) . ".pdf";
+        $caminho = "/site/pdfs/" . $responsavel->id . "/" . $name;
         $outputName = $datadir . $name;
 
         $cmd = "gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$outputName ";
@@ -36,10 +39,15 @@ class PdfController extends Controller
         foreach($fileArray as $file) {
             $cmd .= $file." ";
         }
-	   // echo $cmd;
         $result = shell_exec($cmd);
-        // dd($result);
-        return Storage::download("/site/pdfs/".$responsavel->id."/".$name, "Ordem - " . date("d-m-Y") . ".pdf");
+
+        $ordem = new Ordem;
+        $ordem->engenheiro_id = $responsavel->id;
+        $ordem->caminho = $caminho;
+        $ordem->save();
+
+        dd($result);
+        // return Storage::download("/site/pdfs/".$responsavel->id."/".$name, "Ordem - " . date("d-m-Y") . ".pdf");
         // return $pdf->stream();
     }
 }
