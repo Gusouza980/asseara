@@ -38,19 +38,19 @@
                         <div class="navbar-brand-box">
                             <a href="{{route('painel.index')}}" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="100">
+                                    {{--  <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="100">  --}}
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{asset('admin/images/logo-g.png')}}" alt="" width="100">
+                                    {{--  <img src="{{asset('admin/images/logo-g.png')}}" alt="" width="100">  --}}
                                 </span>
                             </a>
 
                             <a href="{{route('painel.index')}}" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{asset('admin/images/logo-g.png')}}" alt="" style="max-width: 25px;">
+                                    {{--  <img src="{{asset('admin/images/logo-g.png')}}" alt="" style="max-width: 25px;">  --}}
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="100">
+                                    {{--  <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="100">  --}}
                                 </span>
                             </a>
                         </div>
@@ -64,7 +64,7 @@
 
                     <div class="d-flex">
 
-                        <div class="dropdown d-inline-block">
+                        {{--  <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="bx bx-bell bx-tada"></i>
@@ -107,7 +107,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div>  --}}
 
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
@@ -137,8 +137,15 @@
                             <li class="menu-title" key="t-menu">Menu</li>
 
                             <li>
+                                <a href="{{route('painel.index')}}" class="waves-effect">
+                                    <i class="mdi mdi-home"></i>
+                                    <span key="t-dashboards">Início</span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="javascript: void(0);" class="waves-effect">
-                                    <i class="bx bx-home-circle"></i>
+                                    <i class="mdi mdi-account-hard-hat"></i>
                                     <span key="t-dashboards">Responsáveis</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -182,7 +189,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © GEFIT | Fitness Intelligence.
+                                <script>document.write(new Date().getFullYear())</script> © ASSEARA.
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-sm-end d-none d-sm-block">
