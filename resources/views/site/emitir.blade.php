@@ -64,7 +64,7 @@
                 </div>
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
                     <label for="">CEP *</label>
-                    <input type="text" class="form-control" name="cep" placeholder="" required>
+                    <input type="text" class="form-control cep" name="cep" placeholder="" required>
                 </div>
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
                     <label for="">Cidade *</label>
@@ -178,7 +178,7 @@
                 <div class="mb-3 form-group col-12 col-md-3 col-lg-4">
                     <label for="">CPF *</label>
                     <input type="text"
-                        class="form-control" name="cpf_proprietario" placeholder="" required>
+                        class="form-control cpf" name="cpf_proprietario" placeholder="" required>
                 </div> 
                 <div class="mb-3 form-group col-12 col-md-8 col-lg-4">
                     <label for="">Endereço *</label>
@@ -198,12 +198,12 @@
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-3">
                     <label for="">Telefone *</label>
                     <input type="text"
-                        class="form-control" name="telefone_proprietario" placeholder="" required>
+                        class="form-control telefone" name="telefone_proprietario" placeholder="" required>
                 </div> 
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-3">
                     <label for="">CEP *</label>
                     <input type="text"
-                        class="form-control" name="cep_proprietario" placeholder="" required>
+                        class="form-control cep" name="cep_proprietario" placeholder="" required>
                 </div> 
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-3">
                     <label for="">Cidade *</label>
@@ -424,12 +424,12 @@
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-3">
                     <label for="">Telefone *</label>
                     <input type="text"
-                        class="form-control" name="telefone_autor" placeholder="" required>
+                        class="form-control telefone" name="telefone_autor" placeholder="" required>
                 </div> 
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-3">
                     <label for="">CEP *</label>
                     <input type="text"
-                        class="form-control" name="cep_autor" placeholder="" required>
+                        class="form-control cep" name="cep_autor" placeholder="" required>
                 </div> 
                 <div class="mb-3 form-group col-12 col-md-6 col-lg-3">
                     <label for="">Cidade *</label>
@@ -479,4 +479,14 @@
     </div>
 
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('.telefone').mask('(00) 00000-0000');
+        $('.cpf').mask('000.000.000-00');
+        $('.cep').mask('00000-000');
+    });
+</script>
 @endsection

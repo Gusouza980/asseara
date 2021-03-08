@@ -42,7 +42,9 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{route('pdf.baixar', ['ordem' => $ordem])}}" target="_blank" class="btn btn-primary" role="button">Baixar</a>
+                            @if($ordem->aprovado)
+                                <a href="{{route('pdf.baixar', ['ordem' => $ordem])}}" target="_blank" class="btn btn-primary" role="button">Baixar</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
