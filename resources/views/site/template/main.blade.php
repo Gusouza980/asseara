@@ -17,7 +17,7 @@
         <link href="{{asset('site/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('site/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
-
+        @yield("styles")
     </head>
 
     <body>
@@ -25,6 +25,7 @@
             <div class="container">
                 <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
                     <div class="@yield('tamanhos')">
+                        @yield("botoes")
                         <div class="card overflow-hidden">
                             @yield("conteudo")
                         </div>

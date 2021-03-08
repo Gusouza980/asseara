@@ -26,7 +26,9 @@ Route::post('/registrar', [App\Http\Controllers\SiteController::class, 'registra
 
 Route::middleware(['responsavel'])->group(function () {
     Route::get('/', [App\Http\Controllers\SiteController::class, 'index'])->name("site.index");
+    Route::get('/emissao', [App\Http\Controllers\SiteController::class, 'emissao'])->name("site.emissao");
     Route::post('/pdf/criar', [App\Http\Controllers\PdfController::class, 'criar'])->name("pdf.criar");
+    Route::get('/pdf/baixar/{ordem}', [App\Http\Controllers\PdfController::class, 'baixar'])->name("pdf.baixar");
 });
 
 Route::get('/painel/login', [App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");

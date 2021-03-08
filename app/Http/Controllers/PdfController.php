@@ -50,4 +50,10 @@ class PdfController extends Controller
         // return Storage::download("/site/pdfs/".$responsavel->id."/".$name, "Ordem - " . date("d-m-Y") . ".pdf");
         // return $pdf->stream();
     }
+
+    public function baixar(Ordem $ordem){
+        if($ordem->aprovado){
+            return Storage::download($ordem->caminho, "Ordem " . date("d-m-Y", strtotime($ordem->created_at)) . ".pdf");
+        }
+    }
 }

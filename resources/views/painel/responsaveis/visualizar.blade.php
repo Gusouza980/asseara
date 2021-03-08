@@ -6,10 +6,6 @@
     <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
-@section('titulo')
-    Listagem de responsáveis
-@endsection
-
 @section('botoes')
 @endsection
 
@@ -73,9 +69,9 @@
                                 <td>
                                     <a href="{{asset($ordem->caminho)}}" target="_blank" class="btn btn-primary" role="button">Visualizar</a>
                                     @if(!$ordem->aprovado)
-                                        <a href="{{route('painel.responsavel.visualizar', ['responsavel' => $responsavel])}}" id="" class="btn btn-success" role="button">Aprovar</a>
+                                        <a href="{{route('painel.ordem.aprovar', ['ordem' => $ordem])}}" id="" class="btn btn-success" role="button">Aprovar</a>
                                     @else
-                                        <a href="{{route('painel.responsavel.visualizar', ['responsavel' => $responsavel])}}" id="" class="btn btn-danger" role="button">Bloquear</a>
+                                        <a href="{{route('painel.ordem.bloquear', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Bloquear</a>
                                     @endif
                                 </td>
                             </tr>

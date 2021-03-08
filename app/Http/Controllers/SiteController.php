@@ -11,7 +11,12 @@ class SiteController extends Controller
 
     //
     public function index(){
-        return view("site.index");
+        $responsavel = Engenheiro::find(session()->get("engenheiro"));
+        return view("site.index", ["responsavel" => $responsavel]);
+    }
+
+    public function emissao(){
+        return view("site.emitir");
     }
 
     public function login(){
