@@ -8,6 +8,7 @@ use App\Models\Engenheiro;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Ordem;
 use Illuminate\Support\Str;
+use App\Models\ComprovanteOrdem;
 
 class PdfController extends Controller
 {
@@ -45,6 +46,18 @@ class PdfController extends Controller
         $ordem->engenheiro_id = $responsavel->id;
         $ordem->caminho = $caminho;
         $ordem->save();
+
+        if($request->file("comprovante")){
+            foreach($request->file("comprovante") as $file){
+                $comprovante = new ComprovanteOrdem;
+                $comprovante->caminho = $file->store(
+                    'admin/images/comprovantes/'.Str::slug($responsavel->cpf).'/ordens', 'local'
+                );
+                $comprovante->ordem_id = $ordem->id;
+                $comprovante->save();
+            }
+            
+        }
 
         //dd($result);
 	session()->flash('sucesso', 'Sua emissão está em análise. Aguarde aprovação.');

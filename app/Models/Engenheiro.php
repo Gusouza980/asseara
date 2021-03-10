@@ -12,4 +12,8 @@ class Engenheiro extends Model
     public function ordens(){
         return $this->hasMany(Ordem::class);
     }
+
+    public function comprovantes(){
+        return $this->hasMany(ComprovanteRegistro::class);
+    }
 }

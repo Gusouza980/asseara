@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdemsTable extends Migration
+class CreateComprovanteRegistrosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateOrdemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ordems', function (Blueprint $table) {
+        Schema::create('comprovante_registros', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("engenheiro_id");
             $table->string("caminho");
-            $table->tinyInteger("aprovado")->default(0);
             $table->timestamps();
             $table->foreign('engenheiro_id')->references('id')->on('engenheiros')->onDelete('cascade');
         });
@@ -30,6 +29,6 @@ class CreateOrdemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordems');
+        Schema::dropIfExists('comprovante_registros');
     }
 }

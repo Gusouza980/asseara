@@ -6,102 +6,60 @@
     <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
+@section('titulo')
+    Listagem de ordens {{$tipo}}
+@endsection
+
 @section('botoes')
+<a name="" id="" class="btn btn-primary" href="{{route('painel.ordem.analise')}}" role="button">Em Análise</a>
+<a name="" id="" class="btn btn-success ml-3" href="{{route('painel.ordem.aprovadas')}}" role="button">Aprovadas</a>
+<a name="" id="" class="btn btn-danger ml-3" href="{{route('painel.ordem.reprovadas')}}" role="button">Reprovadas</a>
 @endsection
 
 @section('conteudo')
-<div class="row">
-    <div class="col-12">
-        @if($responsavel->aprovado == 0)
-            <a name="" id="" class="btn btn-primary mb-3" href="{{route('painel.responsavel.aprovar', ['responsavel' => $responsavel])}}" role="button">Aprovar</a>
-            <a name="" id="" class="btn btn-danger mb-3" href="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" role="button">Reprovar</a>
-        @elseif($responsavel->aprovado == 1)
-            <a name="" id="" class="btn btn-danger mb-3" href="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" role="button">Provar</a>
-        @else
-            <a name="" id="" class="btn btn-primary mb-3" href="{{route('painel.responsavel.aprovar', ['responsavel' => $responsavel])}}" role="button">Aprovar</a>
-        @endif
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        @if($responsavel->aprovado == 1)
-        <div class="alert alert-success" role="alert">
-            <strong>Este responsável está aprovado</strong>
-        </div>
-        @elseif($responsavel->aprovado == -1)
-            <div class="alert alert-danger" role="alert">
-                <strong>Este responsável está reprovado</strong>
-            </div>
-        @else
-            <div class="alert alert-primary" role="alert">
-                <strong>Este responsável está em análise</strong>
-            </div>
-        @endif
-    </div>
-</div>
-<div class="row">
+<div class="row ">
     <div class="col-12">
         <div class="card">
-            <div class="card-body" style="overflow-x: scroll; font-size: 14px;">
-                <h5>{{$responsavel->nome}}</h5>
-                <hr>
-                <p><b>CPF</b>: {{$responsavel->cpf}}</p>
-                <p><b>Telefone</b>: {{$responsavel->telefone}}</p>
-                <p><b>Registro</b>: {{$responsavel->cpf}}</p>
-                <p><b>Título</b>: {{$responsavel->titulo}}</p>
-                <p><b>Registro</b>: {{$responsavel->registro}}</p>
-                <p><b>Inscrição</b>: {{$responsavel->inscricao}}</p>
-                <p><b>Endereco</b>: {{$responsavel->rua . ", " . $responsavel->numero . " - " . $responsavel->complemento . " - " . $responsavel->cidade . "/" . $responsavel->uf}}</p>
-                <p><b>CEP</b>: {{$responsavel->cep}}</p>
-                <p><b>Email</b>: {{$responsavel->email}}</p>
-                <p><b>Comprovantes:</b></p>
-                <ul>
-                    @php
-                        $cont = 1;
-                    @endphp
-                    @foreach($responsavel->comprovantes as $comprovante)
-                        <li><a href="{{asset($comprovante->caminho)}}" target="_blank">Comprovante {{$cont}}</a></li>
-                        @php
-                            $cont++;
-                        @endphp
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
-
-<div class="row mt-3">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body" style="overflow-x: scroll; font-size: 14px;">
-                <h5>Emissões</h5>
-                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+            <div class="card-body" style="overflow-x: scroll;">
+                <table id="datatable" style="vertical-align: middle;" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
+                            <th>Responsável Técnico</th>
                             <th>Data</th>
                             <th>Aprovado</th>
+                            <th>Comprovantes</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        @foreach($responsavel->ordens as $ordem)
+                        @foreach($ordens as $ordem)
                             <tr>
+                                <td><a href="{{route('painel.responsavel.visualizar', ['responsavel' => $ordem->responsavel])}}">{{$ordem->responsavel->nome}}</a></td>
                                 <td>{{date("d/m/Y H:i:s", strtotime($ordem->created_at))}}</td>
                                 <td>
-                                    @if($ordem->aprovado)
-                                        Sim
-                                    @else
-                                        Não
-                                    @endif
+                                    <ul>
+                                        @php
+                                            $cont = 1;
+                                        @endphp
+                                        @foreach($ordem->comprovantes as $comprovante)
+                                            <li><a href="{{asset($comprovante->caminho)}}" target="_blank">Comprovante {{$cont}}</a></li>
+                                            @php
+                                                $cont++;
+                                            @endphp
+                                        @endforeach
+                                    </ul>
+                                    
                                 </td>
                                 <td>
                                     <a href="{{asset($ordem->caminho)}}" target="_blank" class="btn btn-primary" role="button">Visualizar</a>
-                                    @if(!$ordem->aprovado)
+                                    @if($ordem->aprovado == 0)
                                         <a href="{{route('painel.ordem.aprovar', ['ordem' => $ordem])}}" id="" class="btn btn-success" role="button">Aprovar</a>
+                                        <a href="{{route('painel.ordem.reprovar', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Reprovar</a>
+                                    @elseif($ordem->aprovado == 1)
+                                        <a href="{{route('painel.ordem.reprovar', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Reprovar</a>
                                     @else
-                                        <a href="{{route('painel.ordem.bloquear', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Bloquear</a>
+                                        <a href="{{route('painel.ordem.aprovar', ['ordem' => $ordem])}}" id="" class="btn btn-success" role="button">Aprovar</a>
                                     @endif
                                 </td>
                             </tr>
@@ -110,13 +68,13 @@
                 </table>
             </div>
         </div>
-    </div>
-</div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
 
 @endsection
 
 @section('scripts')
-<!-- Required datatable js -->
+    <!-- Required datatable js -->
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script>

@@ -26,9 +26,11 @@ Route::post('/registrar', [App\Http\Controllers\SiteController::class, 'registra
 
 Route::middleware(['responsavel'])->group(function () {
     Route::get('/', [App\Http\Controllers\SiteController::class, 'index'])->name("site.index");
+    Route::get('/responsavel', [App\Http\Controllers\SiteController::class, 'responsavel'])->name("site.responsavel");
     Route::get('/emissao', [App\Http\Controllers\SiteController::class, 'emissao'])->name("site.emissao");
     Route::post('/pdf/criar', [App\Http\Controllers\PdfController::class, 'criar'])->name("pdf.criar");
     Route::get('/pdf/baixar/{ordem}', [App\Http\Controllers\PdfController::class, 'baixar'])->name("pdf.baixar");
+    Route::get('/sair', [App\Http\Controllers\SiteController::class, 'sair'])->name("site.sair");
 });
 
 Route::get('/painel/login', [App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
@@ -42,8 +44,11 @@ Route::middleware(['usuario'])->group(function () {
     Route::get('/painel/responsaveis', [App\Http\Controllers\EngenheirosController::class, 'index'])->name("painel.responsaveis");
     Route::get('/painel/responsavel/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'visualizar'])->name("painel.responsavel.visualizar");
     Route::get('/painel/responsavel/aprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'aprovar'])->name("painel.responsavel.aprovar");
-    Route::get('/painel/responsavel/bloquear/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'bloquear'])->name("painel.responsavel.bloquear");
+    Route::get('/painel/responsavel/reprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'reprovar'])->name("painel.responsavel.reprovar");
 
+    Route::get('/painel/ordens/analise', [App\Http\Controllers\OrdensController::class, 'analise'])->name("painel.ordem.analise");
+    Route::get('/painel/ordens/aprovadas', [App\Http\Controllers\OrdensController::class, 'aprovadas'])->name("painel.ordem.aprovadas");
+    Route::get('/painel/ordens/reprovadas', [App\Http\Controllers\OrdensController::class, 'reprovadas'])->name("painel.ordem.reprovadas");
     Route::get('/painel/ordem/aprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'aprovar'])->name("painel.ordem.aprovar");
-    Route::get('/painel/ordem/bloquear/{ordem}', [App\Http\Controllers\OrdensController::class, 'bloquear'])->name("painel.ordem.bloquear");
+    Route::get('/painel/ordem/reprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'reprovar'])->name("painel.ordem.reprovar");
 });

@@ -9,8 +9,11 @@
 @section("botoes")
 
 <div class="row mb-3">
-    <div class="col-12">
+    <div class="col-6 text-start">
         <a name="" id="" class="btn btn-primary" href="{{route('site.emissao')}}" role="button">Nova Emissão</a>
+    </div>
+    <div class="col-6 text-end">
+        <a name="" id="" class="btn btn-danger" href="{{route('site.sair')}}" role="button">Sair</a>
     </div>
 </div>
 

@@ -29,7 +29,7 @@ class CreateEngenheirosTable extends Migration
             $table->string("uf", 6)->nullable();
             $table->string("cep", 20)->nullable();
             $table->string("email")->nullable();
-            $table->boolean("aprovado")->default(false);
+            $table->tinyInteger("aprovado")->default(0);
             $table->timestamps();
         });
     }

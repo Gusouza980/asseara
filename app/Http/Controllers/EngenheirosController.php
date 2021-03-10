@@ -18,14 +18,21 @@ class EngenheirosController extends Controller
     }
 
     public function aprovar(Engenheiro $responsavel){
-        $responsavel->aprovado = true;
+        $responsavel->aprovado = 1;
+        $responsavel->save();
+        toastr()->success("Engenheiro aprovado com sucesso!");
+        return redirect()->back();
+    }
+
+    public function reprovar(Engenheiro $responsavel){
+        $responsavel->aprovado = -1;
         $responsavel->save();
         toastr()->success("Engenheiro aprovado com sucesso!");
         return redirect()->back();
     }
 
     public function bloquear(Engenheiro $responsavel){
-        $responsavel->aprovado = false;
+        $responsavel->aprovado = -1;
         $responsavel->save();
         toastr()->success("Engenheiro bloqueado com sucesso!");
         return redirect()->back();

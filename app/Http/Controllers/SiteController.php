@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Engenheiro;
+use App\Models\ComprovanteRegistro;
+use Illuminate\Support\Str;
+
 
 class SiteController extends Controller
 {
 
     //
     public function index(){
+        return redirect()->route("site.responsavel");
+    }
+
+    public function responsavel(){
         $responsavel = Engenheiro::find(session()->get("engenheiro"));
         return view("site.index", ["responsavel" => $responsavel]);
     }
@@ -68,7 +75,24 @@ class SiteController extends Controller
 
         $engenheiro->save();
 
+        if($request->file("comprovante")){
+            foreach($request->file("comprovante") as $file){
+                $comprovante = new ComprovanteRegistro;
+                $comprovante->caminho = $file->store(
+                    'admin/images/comprovantes/'.Str::slug($engenheiro->cpf), 'local'
+                );
+                $comprovante->engenheiro_id = $engenheiro->id;
+                $comprovante->save();
+            }
+            
+        }
+
         session()->flash("sucesso", "Recebemos seu pedido de cadastro. Por favor, aguarde enquanto verificamos seus dados para aprová-lo.");
         return redirect()->route("site.login");
+    }
+
+    public function sair(){
+        session()->forget("engenheiro");
+        return redirect()->route("site.index");
     }
 }

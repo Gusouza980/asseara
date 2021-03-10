@@ -40,9 +40,9 @@
             <div class="mt-3 d-grid">
                 <button class="btn btn-primary waves-effect waves-light" type="submit">Entrar</button>
             </div>
-{{--              
-            <div class="mt-4 text-center">
-                <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+            
+            {{--  <div class="mt-4 text-center">
+                <a href="{{site.senha.recuperar}}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Esqueceu sua senha?</a>
             </div>  --}}
         </form>
     </div>

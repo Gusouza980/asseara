@@ -21,7 +21,7 @@
 <div class="card-body pt-3"> 
     <div class="p-2">
         @include("includes.errors")
-        <form class="needs-validation" novalidate action="{{route('site.registrar')}}" method="POST">
+        <form class="needs-validation" novalidate action="{{route('site.registrar')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
 
@@ -291,11 +291,28 @@
                         Por favor, informe o e-mail.
                     </div>      
                 </div>
+
+                <div class="col-12 mt-3" id="div-comprovantes">
+                    <div class="row mb-3">
+                        <div class="col-6 text-start">
+                            <h5>Comprovantes de Registro</h5>
+                        </div>
+                        <div class="col-6 text-end">
+                            <input type="button" class="btn btn-primary" onclick="adiciona_input()" value="Adicionar"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-11">
+                            <input class="form-control" type="file" name="comprovante[]" multiple> 
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="mt-4 d-grid">
                     <button class="btn btn-primary waves-effect waves-light" type="submit">Registrar</button>
                 </div>
             </div>
+            
         </form>
     </div>
     <div class="row">
@@ -308,6 +325,22 @@
 
 @section('scripts')
 <script>
+    function adiciona_input(){
+        html = '<div class="row">';
+            html += '<div class="mb-3 col-11">';
+                html += '<input class="form-control" type="file" name="comprovante[]" multiple>';
+            html += '</div>';
+            html += '<div class="mb-3 col-1">';
+                html += '<input type="button" class="btn btn-primary" onclick="remove_input(this)" value="x"/>';
+            html += '</div>';
+        html += "</div>";
+        $("#div-comprovantes").append(html);
+    }
+
+    function remove_input(element){
+        $(element).parent().parent().remove();
+    }
+
     $(document).ready(function(){
         $('#telefone').mask('(00) 00000-0000');
         $('#cpf').mask('000.000.000-00');

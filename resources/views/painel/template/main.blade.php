@@ -4,10 +4,10 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Dashboard | Skote - Admin & Dashboard Template</title>
+        <title>Asseara - Painel Administrativo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
+        <meta content="Painel administrativo da Asseara" name="description" />
+        <meta content="Luis Gustavo de Souza Carvalho" name="author" />
         <meta name="_token" content="{{ csrf_token() }}">
 
         <!-- App favicon -->
@@ -144,13 +144,17 @@
                             </li>
 
                             <li>
-                                <a href="javascript: void(0);" class="waves-effect">
+                                <a href="{{route('painel.responsaveis')}}" class="waves-effect">
                                     <i class="mdi mdi-account-hard-hat"></i>
                                     <span key="t-dashboards">Responsáveis</span>
                                 </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{route('painel.responsaveis')}}" key="t-default">Listagem</a></li>
-                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="{{route('painel.ordem.analise')}}" class="waves-effect">
+                                    <i class="far fa-copy"></i>
+                                    <span key="t-dashboards">Ordens</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -173,7 +177,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">@yield("titulo")</h4>
+                                    <div class="col-6 text-start">
+                                        <h4 class="mb-sm-0 font-size-18">@yield("titulo")</h4>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        @yield("botoes")
+                                    </div>
                                 </div>
                             </div>
                         </div>

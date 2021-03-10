@@ -276,7 +276,7 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
     <div style="position: absolute; top: 970px; left: 430px; width:270px; border-bottom: 1px solid black;">
     </div>
 
-    <span style="font-family: Calibri, sans-serif;position: absolute; top: 980px; left: 40px; font-size: 12px; font-weight: bold;">Nome do Profissional Responsável Técnico</span>
+    <span style="font-family: Calibri, sans-serif;position: absolute; top: 980px; left: 40px; font-size: 12px; font-weight: bold;">{{$responsavel->nome}}</span>
     <span style="font-family: Calibri, sans-serif;position: absolute; top: 995px; left: 40px; font-size: 12px;">Profissional RT:</span>
 
     <span style="font-family: Calibri, sans-serif;position: absolute; top: 980px; left: 430px; font-size: 12px; font-weight: bold;">ASSEARA</span>

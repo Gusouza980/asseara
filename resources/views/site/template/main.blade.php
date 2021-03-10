@@ -4,10 +4,10 @@
 <head>
         
         <meta charset="utf-8" />
-        <title>Login | Skote - Admin & Dashboard Template</title>
+        <title>Asseara</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
+        <meta content="Asseara - Associação dos Engenheiros da Região de Alfenas" name="description" />
+        <meta content="Luis Gustavo de Souza Carvalho" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{asset('site/images/favicon.ico')}}">
 
