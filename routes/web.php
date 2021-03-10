@@ -33,22 +33,22 @@ Route::middleware(['responsavel'])->group(function () {
     Route::get('/sair', [App\Http\Controllers\SiteController::class, 'sair'])->name("site.sair");
 });
 
-Route::get('/painel/login', [App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
-Route::post('/painel/logar', [App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");
+Route::get('/sistema/login', [App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
+Route::post('/sistema/logar', [App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");
 
 Route::middleware(['usuario'])->group(function () {
-    Route::get('/painel', [App\Http\Controllers\PainelController::class, 'index'])->name("painel.index");
-    Route::get('/painel/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
+    Route::get('/sistema', [App\Http\Controllers\PainelController::class, 'index'])->name("painel.index");
+    Route::get('/sistema/sair', [\App\Http\Controllers\PainelController::class, 'sair'])->name("painel.sair");
 
     // Rotas de responsáveis
-    Route::get('/painel/responsaveis', [App\Http\Controllers\EngenheirosController::class, 'index'])->name("painel.responsaveis");
-    Route::get('/painel/responsavel/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'visualizar'])->name("painel.responsavel.visualizar");
-    Route::get('/painel/responsavel/aprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'aprovar'])->name("painel.responsavel.aprovar");
-    Route::get('/painel/responsavel/reprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'reprovar'])->name("painel.responsavel.reprovar");
+    Route::get('/sistema/responsaveis', [App\Http\Controllers\EngenheirosController::class, 'index'])->name("painel.responsaveis");
+    Route::get('/sistema/responsavel/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'visualizar'])->name("painel.responsavel.visualizar");
+    Route::get('/sistema/responsavel/aprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'aprovar'])->name("painel.responsavel.aprovar");
+    Route::get('/sistema/responsavel/reprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'reprovar'])->name("painel.responsavel.reprovar");
 
-    Route::get('/painel/ordens/analise', [App\Http\Controllers\OrdensController::class, 'analise'])->name("painel.ordem.analise");
-    Route::get('/painel/ordens/aprovadas', [App\Http\Controllers\OrdensController::class, 'aprovadas'])->name("painel.ordem.aprovadas");
-    Route::get('/painel/ordens/reprovadas', [App\Http\Controllers\OrdensController::class, 'reprovadas'])->name("painel.ordem.reprovadas");
-    Route::get('/painel/ordem/aprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'aprovar'])->name("painel.ordem.aprovar");
-    Route::get('/painel/ordem/reprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'reprovar'])->name("painel.ordem.reprovar");
+    Route::get('/sistema/ordens/analise', [App\Http\Controllers\OrdensController::class, 'analise'])->name("painel.ordem.analise");
+    Route::get('/sistema/ordens/aprovadas', [App\Http\Controllers\OrdensController::class, 'aprovadas'])->name("painel.ordem.aprovadas");
+    Route::get('/sistema/ordens/reprovadas', [App\Http\Controllers\OrdensController::class, 'reprovadas'])->name("painel.ordem.reprovadas");
+    Route::get('/sistema/ordem/aprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'aprovar'])->name("painel.ordem.aprovar");
+    Route::get('/sistema/ordem/reprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'reprovar'])->name("painel.ordem.reprovar");
 });
