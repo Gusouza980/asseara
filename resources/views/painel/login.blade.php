@@ -56,12 +56,12 @@
                             <div class="w-100">
 
                                 <div class="d-flex flex-column h-100">
-                                    {{--  <div class="mb-4 mb-md-5">
+                                     <div class="">
                                         <a href="index.html" class="md-block auth-logo">
-                                            <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="200" class="mx-auto auth-logo-dark">
-                                            <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="200" class="mx-auto auth-logo-light">
+                                            <img src="{{asset('site/images/asseara-logo-branca.png')}}" alt="" width="200" class="mx-auto auth-logo-dark">
+                                            <img src="{{asset('site/images/asseara-logo-branca.png')}}" alt="" width="200" class="mx-auto auth-logo-light">
                                         </a>
-                                    </div>  --}}
+                                    </div> 
                                     <div class="my-auto">
                                         
                                         <div>

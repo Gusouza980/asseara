@@ -1,11 +1,41 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap);
 :root {
-    --azul: rgba(0, 46, 130, 1.0);
-    --verde: rgba(179,244,0,1);
+    --azul: rgba(0, 152, 218, 1.0);
+    --azul-soft: rgba(0, 152, 218, 0.25);
+    --verde: rgba(179, 244, 0, 1);
 }
 
-.menu-icon{
+
+/* BACKGROUNDS */
+
+.bg-azul-soft {
+    background-color: var(--azul-soft) !important;
+}
+
+
+/* BUTTONS */
+
+.btn-azul,
+.btn-azul:hover {
+    background-color: var(--azul);
+    color: white;
+}
+
+
+/* TEXTS */
+
+.text-azul {
+    color: var(--azul) !important;
+}
+
+.menu-icon {
     font-size: 1.2em !important;
+}
+
+.page-item.active .page-link {
+    color: #fff;
+    background-color: var(--azul) !important;
+    border-color: var(--azul) !important;
 }
 
 #page-topbar {
@@ -5030,8 +5060,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
     border-radius: 30px;
 }
 
-.lista-atualizacoes > ul{
+.lista-atualizacoes>ul {
     list-style: none;
 }
+
 
 /*# sourceMappingURL=app.min.css.map */

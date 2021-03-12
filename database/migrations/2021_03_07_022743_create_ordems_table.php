@@ -16,6 +16,8 @@ class CreateOrdemsTable extends Migration
         Schema::create('ordems', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("engenheiro_id");
+            $table->string("numero")->nullable();
+            $table->string("proprietario")->nullable();
             $table->string("caminho");
             $table->tinyInteger("aprovado")->default(0);
             $table->timestamps();

@@ -38,19 +38,19 @@
                         <div class="navbar-brand-box">
                             <a href="{{route('painel.index')}}" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    {{--  <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="100">  --}}
+                                    <img src="{{asset('site/images/asseara-logo-branca.png')}}" alt="" width="100"> 
                                 </span>
                                 <span class="logo-lg">
-                                    {{--  <img src="{{asset('admin/images/logo-g.png')}}" alt="" width="100">  --}}
+                                     <img src="{{asset('site/images/asseara-logo-branca.png')}}" alt="" width="200"> 
                                 </span>
                             </a>
 
                             <a href="{{route('painel.index')}}" class="logo logo-light">
                                 <span class="logo-sm">
-                                    {{--  <img src="{{asset('admin/images/logo-g.png')}}" alt="" style="max-width: 25px;">  --}}
+                                    <img src="{{asset('site/images/asseara-logo-branca.png')}}" alt="" width="100"> 
                                 </span>
                                 <span class="logo-lg">
-                                    {{--  <img src="{{asset('admin/images/logo-gefit-branco.png')}}" alt="" width="100">  --}}
+                                     <img class="mt-3" src="{{asset('site/images/asseara-logo-branca.png')}}" alt="" width="120"> 
                                 </span>
                             </a>
                         </div>
@@ -155,6 +155,16 @@
                                     <i class="far fa-copy"></i>
                                     <span key="t-dashboards">Ordens</span>
                                 </a>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="waves-effect">
+                                    <i class="fa fa-users menu-icon" aria-hidden="true"></i>
+                                    <span key="t-dashboards">Usuários</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{route('painel.usuarios')}}" key="t-default">Cadastros</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

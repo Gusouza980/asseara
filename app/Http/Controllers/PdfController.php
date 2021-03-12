@@ -43,6 +43,8 @@ class PdfController extends Controller
         $result = shell_exec($cmd);
 
         $ordem = new Ordem;
+        $ordem->proprietario = $request->nome_proprietario;
+        $ordem->numero = config("globals.rts")[$request->conselho] . " " .  $request->rt;
         $ordem->engenheiro_id = $responsavel->id;
         $ordem->caminho = $caminho;
         $ordem->save();
@@ -60,8 +62,8 @@ class PdfController extends Controller
         }
 
         //dd($result);
-	session()->flash('sucesso', 'Sua emissão está em análise. Aguarde aprovação.');
-	return redirect()->route('site.index');
+        session()->flash('sucesso', 'Sua emissão está em análise. Aguarde aprovação.');
+        return redirect()->route('site.index');
         // return Storage::download("/site/pdfs/".$responsavel->id."/".$name, "Ordem - " . date("d-m-Y") . ".pdf");
         // return $pdf->stream();
     }

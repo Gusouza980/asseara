@@ -1,4 +1,4 @@
-@extends('site.template.main')
+@extends('painel.template.main')
 
 @section('styles')
     <!-- DataTables -->
@@ -6,79 +6,58 @@
     <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
-@section("botoes")
+@section('titulo')
+    Listagem de usuarios
+@endsection
 
-<div class="row mb-3">
-    <div class="col-6 text-start">
-        <a name="" id="" class="btn btn-azul" href="{{route('site.emissao')}}" role="button">Nova Emissão</a>
-    </div>
-    <div class="col-6 text-end">
-        <a name="" id="" class="btn btn-danger" href="{{route('site.sair')}}" role="button">Sair</a>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Nome: {{$responsavel->nome}}</h4>
-                <h4 class="card-title">Título: {{$responsavel->titulo}}</h4>
-                <h4 class="card-title">Registro: {{$responsavel->registro}}</h4>
-            </div>
-        </div>
-    </div>
-</div>
-
+@section('botoes')
+    <a name="" id="" class="btn btn-success" href="{{route('painel.usuario.cadastro')}}" role="button">Novo usuário</a>
 @endsection
 
 @section('conteudo')
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body" style="overflow-x: scroll;">
+                <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Usuário</th>
+                            <th>Email</th>
+                            {{-- <th>Acesso</th> --}}
+                            <th></th>
+                        </tr>
+                    </thead>
 
-<div class="card-body pt-3"> 
-    <div class="p-2">
-        <h4>Minhas Emissões</h4>
-        <hr>
-        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Proprietário</th>
-                    <th>Livro n°</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
 
-                @foreach($responsavel->ordens as $ordem)
-                    <tr>
-                        <td>{{date("d/m/Y H:i:s", strtotime($ordem->created_at))}}</td>
-                        <td>{{$ordem->proprietario}}</td>
-                        <td>{{$ordem->numero}}</td>
-                        <td>
-                            @if($ordem->aprovado == 1)
-                                <span style="color:green;">Aprovado</span>
-                            @elseif($ordem->aprovado == 0)
-                                <span class="text-primary">Aguardando Aprovação</span>
-                            @else
-                                <span style="color:red;">Reprovado</span>
-                            @endif
-                        </td>
-                        <td>
-                            @if($ordem->aprovado == 1)
-                                <a href="{{route('pdf.baixar', ['ordem' => $ordem])}}" target="_blank" class="btn btn-azul" role="button">Baixar</a>
-                            @endif
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                    <tbody>
 
-</div>
+                        @foreach($usuarios as $usuario)
+                            <tr>
+                                <td>{{$usuario->nome}}</td>
+                                <td>{{$usuario->usuario}}</td>
+                                <td>{{$usuario->email}}</td>
+                                {{-- <td>
+                                    {{config("globals.acesso")[$usuario->acesso]}}
+                                </td> --}}
+                                <td>
+                                    <a href="{{route('painel.usuario.editar', ['usuario' => $usuario])}}" id="" class="btn btn-warning" role="button">Editar</a>
+                                    {{-- <a name="" id="" class="btn btn-danger" href="{{route('painel.configuracoes.atividade.deletar', ['atividade' => $atividade])}}" role="button">Excluir</a> --}}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
+
 @endsection
 
 @section('scripts')
-<!-- Required datatable js -->
+    <!-- Required datatable js -->
     <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script>

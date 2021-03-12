@@ -6,16 +6,16 @@
 
 
 @section('conteudo')
-<div class="bg-primary bg-soft">
+<div class="bg-azul-soft">
     <div class="row">
         <div class="col-7">
-            <div class="text-primary p-4">
-                <h5 class="text-primary">Bem vindo !</h5>
+            <div class="text-azul p-4">
+                <h5 class="text-azul">Bem vindo !</h5>
                 <p>Coloque suas credenciais para acessar o sistema.</p>
             </div>
         </div>
-        <div class="col-5 align-self-end">
-            <img src="{{asset('site/images/profile-img.png')}}" alt="" class="img-fluid">
+        <div class="col-4 align-self-center">
+            <img src="{{asset('site/images/asseara-logo-azul.png')}}" style="max-width: 100%;" alt="" class="img-fluid">
         </div>
     </div>
 </div>
@@ -38,7 +38,7 @@
             </div>
             
             <div class="mt-3 d-grid">
-                <button class="btn btn-primary waves-effect waves-light" type="submit">Entrar</button>
+                <button class="btn btn-azul waves-effect waves-light" type="submit">Entrar</button>
             </div>
             
             {{--  <div class="mt-4 text-center">
@@ -48,7 +48,7 @@
     </div>
     <div class="row">
         <div class="col-12 text-center mt-3">
-            <p>Deseja fazer parte ? <a href="{{route('site.registro')}}" class="fw-medium text-primary"> Clique aqui</a> e registre-se.</p>
+            <p>Deseja fazer parte ? <a href="{{route('site.registro')}}" class="fw-medium text-azul"> Clique aqui</a> e registre-se.</p>
         </div>
     </div>
 </div>

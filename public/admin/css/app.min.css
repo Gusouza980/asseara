@@ -1,7 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&amp;display=swap);
 :root {
     --azul: rgba(0, 152, 218, 1.0);
+    --azul-soft: rgba(0, 152, 218, 0.25);
     --verde: rgba(179, 244, 0, 1);
+}
+
+
+/* BACKGROUNDS */
+
+.bg-azul-soft {
+    background-color: var(--azul-soft) !important;
+}
+
+
+/* BUTTONS */
+
+.btn-azul {
+    background-color: var(--azul);
+    color: white;
 }
 
 .menu-icon {

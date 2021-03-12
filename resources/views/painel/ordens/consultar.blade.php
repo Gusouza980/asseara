@@ -24,8 +24,10 @@
                 <table id="datatable" style="vertical-align: middle;" class="table table-bordered dt-responsive  nowrap w-100">
                     <thead>
                         <tr>
-                            <th>Responsável Técnico</th>
                             <th>Data</th>
+                            <th>Responsável Técnico</th>
+                            <th>Proprietário</th>
+                            <th>Livro n°</th>
                             <th>Aprovado</th>
                             <th>Comprovantes</th>
                             <th></th>
@@ -35,8 +37,19 @@
 
                         @foreach($ordens as $ordem)
                             <tr>
-                                <td><a href="{{route('painel.responsavel.visualizar', ['responsavel' => $ordem->responsavel])}}">{{$ordem->responsavel->nome}}</a></td>
                                 <td>{{date("d/m/Y H:i:s", strtotime($ordem->created_at))}}</td>
+                                <td><a href="{{route('painel.responsavel.visualizar', ['responsavel' => $ordem->responsavel])}}">{{$ordem->responsavel->nome}}</a></td>
+                                <td>{{$ordem->proprietario}}</td>
+                                <td>{{$ordem->numero}}</td>
+                                <td>
+                                    @if($ordem->aprovado == 1)
+                                        <span style="color:green;">Aprovado</span>
+                                    @elseif($ordem->aprovado == 0)
+                                        <span class="text-primary">Aguardando Aprovação</span>
+                                    @else
+                                        <span style="color:red;">Reprovado</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <ul>
                                         @php
