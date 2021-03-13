@@ -1,5 +1,5 @@
 @if ($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-danger my-3">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -10,7 +10,7 @@
 @endif
 
 @if(session()->get("sucesso"))
-    <div class="row">
+    <div class="row my-3">
         <div class="col-12">
             <div class="alert alert-success">
                 {{session()->get("sucesso")}}
@@ -20,7 +20,7 @@
 @endif
 
 @if(session()->get("erro"))
-    <div class="row">
+    <div class="row my-3">
         <div class="col-12">
             <div class="alert alert-danger">
                 {{session()->get("erro")}}

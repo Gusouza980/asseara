@@ -51,9 +51,9 @@
 
                 <div style="font-family: Calibri, sans-serif; font-size: 13px; position: absolute; top: 105px; left: 2px; text-align: center;">
                     <span style="font-family: Calibri, sans-serif; font-size: 13px; position: absolute; top: 0px; left: 0px; text-align: center;">
-                        CPF/CNPJ:
+                        Nome:
                     </span>
-                    <div style="position: absolute; top: 14px; left: 70px; width:100%; border-bottom: 1px solid black;">
+                    <div style="position: absolute; top: 14px; left: 40px; width:100%; border-bottom: 1px solid black;">
                     </div>
                 </div>
 
@@ -110,9 +110,9 @@
 
                 <div style="font-family: Calibri, sans-serif; font-size: 13px; position: absolute; top: 105px; left: 2px; text-align: center;">
                     <span style="font-family: Calibri, sans-serif; font-size: 13px; position: absolute; top: 0px; left: 0px; text-align: center;">
-                        CPF/CNPJ:
+                        Nome:
                     </span>
-                    <div style="position: absolute; top: 14px; left: 70px; width:100%; border-bottom: 1px solid black;">
+                    <div style="position: absolute; top: 14px; left: 40px; width:100%; border-bottom: 1px solid black;">
                     </div>
                 </div>
 

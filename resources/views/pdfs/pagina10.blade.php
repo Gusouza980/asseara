@@ -52,7 +52,7 @@
     @endfor
 
     <span style="font-family: Calibri, sans-serif;position: absolute; top: 1020px; left: 40px; font-size: 11px;">1ª Via Proprietário - 2º Via Entidade/Conselho - 3ª Via Profissional Responsável</span>
-    <span style="font-family: Calibri, sans-serif;position: absolute; top: 1020px; right: 0; font-size: 11px;">Página 3 / 12</span>
+    <span style="font-family: Calibri, sans-serif;position: absolute; top: 1020px; right: 0; font-size: 11px;">Página 7 / 12</span>
 
 </body>
 </html>

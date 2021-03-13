@@ -22,28 +22,17 @@
 <div class="card-body pt-3"> 
     <div class="p-2">
         @include("includes.errors")
-        <form class="form-horizontal" action="{{route('site.logar')}}" method="POST">
+        <form class="form-horizontal" action="{{route('site.senha.temporaria')}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF</label>
                 <input type="text" class="form-control" name="cpf" id="cpf">
             </div>
-
-            <div class="mb-3">
-                <label class="form-label">Senha</label>
-                <div class="input-group auth-pass-inputgroup">
-                    <input type="password" name="senha" class="form-control">
-                    <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
-                </div>
-            </div>
             
             <div class="mt-3 d-grid">
-                <button class="btn btn-azul waves-effect waves-light" type="submit">Entrar</button>
+                <button class="btn btn-azul waves-effect waves-light" type="submit">Recuperar</button>
             </div>
             
-            <div class="mt-4 text-center">
-                <a href="{{route('site.senha.recuperar')}}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Esqueceu sua senha?</a>
-            </div>
         </form>
     </div>
     <div class="row">

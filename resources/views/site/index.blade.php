@@ -2,89 +2,126 @@
 
 @section('styles')
     <!-- DataTables -->
-    <link href="{{asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
 @endsection
 
-@section("botoes")
+@section('botoes')
 
-<div class="row mb-3">
-    <div class="col-6 text-start">
-        <a name="" id="" class="btn btn-azul" href="{{route('site.emissao')}}" role="button">Nova Emissão</a>
+    <div class="row pt-5">
+        <div class="col-6 text-start">
+            <a name="" id="" class="btn btn-azul" href="{{ route('site.emissao') }}" role="button">Nova Emissão</a>
+        </div>
+        <div class="col-6 text-end">
+            <a name="" id="" class="btn btn-azul" data-bs-toggle="modal"
+                data-bs-target="#modalAlterarSenha" role="button">Alterar Senha</a>
+            <a name="" id="" class="btn btn-danger" href="{{ route('site.sair') }}" role="button">Sair</a>
+        </div>
     </div>
-    <div class="col-6 text-end">
-        <a name="" id="" class="btn btn-danger" href="{{route('site.sair')}}" role="button">Sair</a>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Nome: {{$responsavel->nome}}</h4>
-                <h4 class="card-title">Título: {{$responsavel->titulo}}</h4>
-                <h4 class="card-title">Registro: {{$responsavel->registro}}</h4>
+    @include("includes.errors")
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Nome: {{ $responsavel->nome }}</h4>
+                    <h4 class="card-title">Título: {{ $responsavel->titulo }}</h4>
+                    <h4 class="card-title">Registro: {{ $responsavel->registro }}</h4>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
 
 @section('conteudo')
-
-<div class="card-body pt-3"> 
-    <div class="p-2">
-        <h4>Minhas Emissões</h4>
-        <hr>
-        <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Proprietário</th>
-                    <th>Livro n°</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach($responsavel->ordens as $ordem)
+    <div class="card-body pt-3">
+        <div class="p-2">
+            <h4>Minhas Emissões</h4>
+            <hr>
+            <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                <thead>
                     <tr>
-                        <td>{{date("d/m/Y H:i:s", strtotime($ordem->created_at))}}</td>
-                        <td>{{$ordem->proprietario}}</td>
-                        <td>{{$ordem->numero}}</td>
-                        <td>
-                            @if($ordem->aprovado == 1)
-                                <span style="color:green;">Aprovado</span>
-                            @elseif($ordem->aprovado == 0)
-                                <span class="text-primary">Aguardando Aprovação</span>
-                            @else
-                                <span style="color:red;">Reprovado</span>
-                            @endif
-                        </td>
-                        <td>
-                            @if($ordem->aprovado == 1)
-                                <a href="{{route('pdf.baixar', ['ordem' => $ordem])}}" target="_blank" class="btn btn-azul" role="button">Baixar</a>
-                            @endif
-                        </td>
+                        <th>Data</th>
+                        <th>Proprietário</th>
+                        <th>Livro n°</th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+
+                    @foreach ($responsavel->ordens as $ordem)
+                        <tr>
+                            <td>{{ date('d/m/Y H:i:s', strtotime($ordem->created_at)) }}</td>
+                            <td>{{ $ordem->proprietario }}</td>
+                            <td>{{ $ordem->numero }}</td>
+                            <td>
+                                @if ($ordem->aprovado == 1)
+                                    <span style="color:green;">Aprovado</span>
+                                @elseif($ordem->aprovado == 0)
+                                    <span class="text-primary">Aguardando Aprovação</span>
+                                @else
+                                    <span style="color:red;">Reprovado</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($ordem->aprovado == 1)
+                                    <a href="{{ route('pdf.baixar', ['ordem' => $ordem]) }}" target="_blank"
+                                        class="btn btn-azul" role="button">Baixar</a>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
     </div>
 
-</div>
+    <div class="modal fade" id="modalAlterarSenha" tabindex="-1" role="dialog" aria-labelledby="modalAlterarSenhaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Alterar Senha</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('site.senha.alterar')}}" method="post">
+                        @csrf
+                        <div class="form-group mb-3">
+                            <label for="senha_atual">Senha Atual</label>
+                            <input type="password"
+                                class="form-control" name="senha_atual" id="senha_atual" aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="nova_senha">Nova Senha</label>
+                            <input type="password"
+                                class="form-control" name="nova_senha" id="nova_senha" aria-describedby="helpId" placeholder="">
+                        </div>
+                        <div class="form-group text-end">
+                            <button type="submit" class="btn btn-primary px-3">Alterar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
 @endsection
 
 @section('scripts')
-<!-- Required datatable js -->
-    <script src="{{asset('admin/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <!-- Required datatable js -->
+    <script src="{{ asset('admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#datatable').DataTable( {
-                language:{
+            $('#datatable').DataTable({
+                language: {
                     "emptyTable": "Nenhum registro encontrado",
                     "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
                     "infoEmpty": "Mostrando 0 até 0 de 0 registros",
@@ -214,8 +251,9 @@
                     },
                     "searchPlaceholder": "Digite um termo para pesquisar",
                     "thousands": "."
-                } 
-            } );
-        } );    
-    </script> 
+                }
+            });
+        });
+
+    </script>
 @endsection

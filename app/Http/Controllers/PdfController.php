@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Ordem;
 use Illuminate\Support\Str;
 use App\Models\ComprovanteOrdem;
+use App\Classes\Email;
 
 class PdfController extends Controller
 {
@@ -18,6 +19,8 @@ class PdfController extends Controller
         $responsavel = Engenheiro::find(session()->get("engenheiro"));
 
         $data = $request->all();
+        \Date::setLocale('pt-br');
+        $data["data_atual"] = \Date::now();
 
         Storage::makeDirectory('site/pdfs/'.$responsavel->id);
 
@@ -25,6 +28,7 @@ class PdfController extends Controller
         $datadir = public_path() . "/site/pdfs/" . $responsavel->id . "/";
 
         for($i = 1; $i <= 18; $i++){
+            if($i == 3) continue;
             $pdf_directory = $datadir . 'pagina'.$i.'.pdf';
             $pdf = app()->make('dompdf.wrapper');
             $pdf->loadView('pdfs.pagina' . $i, $data)->save($pdf_directory);
@@ -61,6 +65,9 @@ class PdfController extends Controller
             
         }
 
+        $file = file_get_contents('site/emails/nova_emissao.html');
+        $file = str_replace("{{nome_responsavel}}", $responsavel->nome, $file);
+        Email::enviar($file, "Nova emissão", "gusouza980@gmail.com");
         //dd($result);
         session()->flash('sucesso', 'Sua emissão está em análise. Aguarde aprovação.');
         return redirect()->route('site.index');

@@ -275,14 +275,13 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
 
     <div style="font-family: Calibri, sans-serif; position: absolute; top: 780px; left: 40px; width: 100%; text-align: center;">
         <span style="font-family: Calibri, sans-serif; font-size: 13px; position: absolute; top: 25px; text-align: left;">
-            DECLARO que, em cumprimento à legislação vigente, retirei o presente Livro de Ordem completo, e que
-            efetuarei a baixa da correspondente ART junto ao CONFEA na ocasião do término da Atividade.
+            DECLARO que, em cumprimento à legislação vigente, retirei o presente Livro de Ordem completo, e que efetuarei a baixa da correspondente {{config("globals.rts")[$conselho]}} junto ao {{$conselho}} na ocasião do término da Atividade.
         </span>
     </div>
 
     <div style="font-family: Calibri, sans-serif; position: absolute; top: 840px; width: 100%; text-align: center;">
         <span style="font-family: Calibri, sans-serif; font-size: 13px; position: absolute; top: 25px; left: 35%;">
-            Alfenas - MG, 09 / fevereiro / 2019
+            Alfenas - MG, {{$data_atual->format('d / F / Y')}}
         </span>
     </div>
 
