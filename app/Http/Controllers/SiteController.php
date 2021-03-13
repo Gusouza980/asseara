@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Engenheiro;
 use App\Models\ComprovanteRegistro;
 use Illuminate\Support\Str;
-
+use App\Classes\Email;
 
 class SiteController extends Controller
 {
@@ -87,8 +87,52 @@ class SiteController extends Controller
             
         }
 
+        $file = file_get_contents('site/emails/novo_registro.html');
+        $file = str_replace("{{nome}}", $engenheiro->nome, $file);
+        $file = str_replace("{{titulo}}", $engenheiro->titulo, $file);
+        Email::enviar($file, "Novo registro", "gusouza980@gmail.com");
+
         session()->flash("sucesso", "Recebemos seu pedido de cadastro. Por favor, aguarde enquanto verificamos seus dados para aprová-lo.");
         return redirect()->route("site.login");
+    }
+
+    public function  recuperar_senha(){
+        return view("site.senha");
+    }
+
+    public function senha_temporaria(Request $request){
+        $responsavel = Engenheiro::where("cpf", $request->cpf)->first();
+        if($responsavel){
+            $nova_senha = Str::random(6);
+            $responsavel->senha = Hash::make($nova_senha);
+            $responsavel->save();
+            $file = file_get_contents('site/emails/nova_senha.html');
+            $file = str_replace("{{senha}}", $nova_senha, $file);
+            if(Email::enviar($file, "Nova senha", $responsavel->email)){
+                session()->flash("sucesso", "Uma senha temporária foi enviada para o e-mail informado no seu cadastro.");
+                return redirect()->route("site.login");
+            }else{
+                session()->flash("erro", "Não foi possível enviar um e-mail com sua nova senha temporária no momento. Por favor, tente mais tarde.");
+                return redirect()->back();
+            }
+        }else{
+            session()->flash("erro", "Este cpf não está cadastrado para nenhum usuário.");
+            return redirect()->back();
+        }
+    }
+
+    public function alterar_senha(Request $request){
+        $responsavel = Engenheiro::find(session()->get("engenheiro"));
+        if(Hash::check($request->senha_atual, $responsavel->senha)){
+            $responsavel->senha = Hash::make($request->nova_senha);
+            $responsavel->save();
+            session()->flash("sucesso", "Sua senha foi alterada com sucesso!");
+            return redirect()->back();
+        }else{
+            session()->flash("erro", "A senha atual informada não está correta.");
+            return redirect()->back();
+        }
+        
     }
 
     public function sair(){

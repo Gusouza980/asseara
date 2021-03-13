@@ -62,7 +62,7 @@
                                             </div> 
                                             <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
                                                 <label for="">Data de Início *</label>
-                                                <input type="date" class="form-control" name="inicio" value="{{date('Y-m-d')}}" required>
+                                                <input type="date" class="form-control" name="inicio" value="{{date('Y-m-d')}}" readonly required>
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
                                                 <label for="">Data de Conclusão (Prevista) *</label>
@@ -201,10 +201,10 @@
                                             <div class="mb-3 form-group col-12 col-md-3 col-lg-4">
                                                 <label for="">RG</label>
                                                 <input type="text"
-                                                    class="form-control rg" name="rg_proprietario" placeholder="Ex: MG-18.541.363-8">
+                                                    class="form-control rg" name="rg_proprietario">
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-3 col-lg-4">
-                                                <label for="">CPF *</label>
+                                                <label for="">CPF/CNPJ *</label>
                                                 <input type="text"
                                                     class="form-control cpf" name="cpf_proprietario" placeholder="" required>
                                             </div> 
@@ -425,7 +425,7 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-4 col-lg-4">
-                                                <label for="">Registro no Coneselho n° *</label>
+                                                <label for="">Registro no Conselho n° *</label>
                                                 <input type="text"
                                                     class="form-control" name="registro_autor" placeholder="" required>
                                             </div>
@@ -435,9 +435,9 @@
                                                     class="form-control" name="documento_autor" placeholder="" required>
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-4 col-lg-4">
-                                                <label for="">Inscrição Municipal *</label>
+                                                <label for="">Inscrição Municipal</label>
                                                 <input type="text"
-                                                    class="form-control" name="inscricao_autor" placeholder="" required>
+                                                    class="form-control" name="inscricao_autor" placeholder="">
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-12 col-lg-6">
                                                 <label for="">Endereço *</label>
@@ -512,6 +512,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-6 text-start">
                                                     <h5>Comprovantes</h5>
+                                                    <h6>(anexar a(s) ART/RRT/TRT referente(s) a projeto e a execução)</h6>
                                                 </div>
                                                 <div class="col-6 text-end">
                                                     <input type="button" class="btn btn-azul" onclick="adiciona_input()" value="Adicionar"/>
@@ -519,7 +520,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="mb-3 col-11">
-                                                    <input class="form-control" type="file" name="comprovante[]" multiple> 
+                                                    <input class="form-control" type="file" name="comprovante[]" multiple required> 
                                                 </div>
                                             </div>
                                         </div>
@@ -562,7 +563,7 @@
             function adiciona_input(){
                 html = '<div class="row">';
                     html += '<div class="mb-3 col-11">';
-                        html += '<input class="form-control" type="file" name="comprovante[]" multiple>';
+                        html += '<input class="form-control" type="file" name="comprovante[]" multiple required>';
                     html += '</div>';
                     html += '<div class="mb-3 col-1">';
                         html += '<input type="button" class="btn btn-azul" onclick="remove_input(this)" value="x"/>';
@@ -576,9 +577,8 @@
             }
             $(document).ready(function(){
                 $('.telefone').mask('(00) 00000-0000');
-                $('.cpf').mask('000.000.000-00');
+                //$('.cpf').mask('000.000.000-00');
                 $('.cep').mask('00000-000');
-                $('.rg').mask('SS-99.999.999');
             });
         </script>
     </body>

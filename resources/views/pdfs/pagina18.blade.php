@@ -25,25 +25,24 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
     </div>
 
     <div style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 290px; width: 100%; text-align: center;">
-        <b>Diretoria Executiva 2017/2019</b><br>
-        Presidente Engenheiro Civil Luiz Carlos Pelegrin<br>
+        <b>Diretoria Executiva 2020/2022</b><br>
+        Presidente Engenheiro Civil Eduardo Luiz Souza Ribeiro<br>
         Vice-presidente Engenheiro Eletricista Valter Aparecido de Carvalho<br>
-        1º Diretor Secretário Engenheiro Civil Marcelo Moreno Maia<br>
-        2º Diretor Secretário Engenheiro Civil Eduardo Luiz Souza Ribeiro<br>
-        1º Diretor Tesoureiro Engenheiro Civil Paulo Cesar de Souza<br>
+        1º Diretor Secretário Engenheiro de Produção Mecânica Glauber Martins Legatti<br>
+        2º Diretor Secretário Engenheiro Civil Ricardo Ávila Brabosa Guarda<br>
+        1º Diretor Tesoureiro Engenheiro Agrônomo Marco Aurélio Gomes Schuffner<br>
         2º Diretor Tesoureiro Engenheiro Civil Wagner de Lima Gonçalves<br>
     </div>
 
     <div style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 410px; width: 100%; text-align: center;">
         <b>Projeto Gráfico e Desenvolvimento</b><br>
         Engenheiro Civil Eduardo Luiz Souza Ribeiroo<br>
-        Conselheiro Regional do Conselho Regional de Engenharia e Agronomia de Minas Gerais - CREA-MG<br>
         eduardo_lsr@hotmail.com | +55 35 9 9957 7259<br>
     </div>
 
-    <div style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 485px; width: 100%; text-align: center;">
+    <div style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 475px; width: 100%; text-align: center;">
         <b>Edição, Tiragem e Impressão</b><br>
-        janeiro/2019 &nbsp;&nbsp;|&nbsp;&nbsp; conforme solicitação por profissional &nbsp;&nbsp;|&nbsp;&nbsp; numerado pela ASSEARA
+        janeiro/2020 &nbsp;&nbsp;|&nbsp;&nbsp; conforme solicitação por profissional &nbsp;&nbsp;|&nbsp;&nbsp; numerado pela ASSEARA
     </div>
 
     <div style="font-family: Calibri, sans-serif; font-size: 12px; position: absolute; top: 530px; width: 100%; text-align: center;">

@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/{pagina}', [App\Http\Controllers\PdfController::class, 'pagina1']);
 
 Route::get('/login', [App\Http\Controllers\SiteController::class, 'login'])->name("site.login");
+Route::get('/senha/recuperar', [App\Http\Controllers\SiteController::class, 'recuperar_senha'])->name("site.senha.recuperar");
+Route::post('/senha/recuperar/temporaria', [App\Http\Controllers\SiteController::class, 'senha_temporaria'])->name("site.senha.temporaria");
+Route::post('/senha/alterar', [App\Http\Controllers\SiteController::class, 'alterar_senha'])->name("site.senha.alterar");
+
+
 Route::post('/logar', [App\Http\Controllers\SiteController::class, 'logar'])->name("site.logar");
 Route::get('/registro', [App\Http\Controllers\SiteController::class, 'registro'])->name("site.registro");
 Route::post('/registrar', [App\Http\Controllers\SiteController::class, 'registrar'])->name("site.registrar");
@@ -32,6 +37,7 @@ Route::middleware(['responsavel'])->group(function () {
     Route::get('/pdf/baixar/{ordem}', [App\Http\Controllers\PdfController::class, 'baixar'])->name("pdf.baixar");
     Route::get('/sair', [App\Http\Controllers\SiteController::class, 'sair'])->name("site.sair");
 });
+Route::get('/teste', [App\Http\Controllers\PainelController::class, 'teste'])->name("painel.teste");
 
 Route::get('/sistema/login', [App\Http\Controllers\PainelController::class, 'login'])->name("painel.login");
 Route::post('/sistema/logar', [App\Http\Controllers\PainelController::class, 'logar'])->name("painel.logar");

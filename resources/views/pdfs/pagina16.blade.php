@@ -12,7 +12,7 @@
     <img style="position: absolute; top: 0px; right: 30px; width: 110px;" src="{{asset('site/images/asseara-logo.png')}}" alt="">
 
     <div style="text-align:center; font-family: Calibri, sans-serif; font-size: 25px; font-weight: bold; position: absolute; top: 80px; left: 0px; height: 60px; width: 70%; border: 1px solid #D6D6D6;">
-        <span style="font-family: Calibri, sans-serif; font-size: 19px; font-weight: bold; position: absolute; top: 8px; left: 80px;">08 - Observações Complementares do Profissional</span>
+        <span style="font-family: Calibri, sans-serif; font-size: 19px; font-weight: bold; position: absolute; top: 18px; left: 100px;">Instruções para o preenchimento</span>
     </div>
 
     <div style="font-family: Calibri, sans-serif; font-size: 25px;position: absolute; top: 80px; left: 530px; height: 60px; width: 100%; border: 1px solid #D6D6D6;">
@@ -22,10 +22,6 @@
 
     <div style="font-family: Calibri, sans-serif; position: absolute; top: 160px; width: 100%; text-align: center;">
         <span style="font-family: Calibri, sans-serif; font-size: 13px; position: absolute; top: 0px; text-align: justify;">
-            <b>Recibo</b><br>
-            Servirá como comprovante de beneficio recebido ou de pagamento do serviço prestado pela entidade de classe
-            ao profissional.<br>
-            
             <b>01 - Termo de Abertura</b><br>
             É destinado à identificação geral da obra/serviço a ser executado, do seu proprietário e dos profissionais
             envolvidos em autoria e responsabilidade técnica. É preenchido totalmente no ato da retirada do Livro de
