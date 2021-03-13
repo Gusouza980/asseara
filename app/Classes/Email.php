@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class Email{
     
-    public static function enviar($file, $assunto, $destinatario){
+    public static function enviar($file, $assunto, $destinatario, $admin = false){
         $mail = new PHPMailer(true);
 
         try {
@@ -23,7 +23,12 @@ class Email{
             $mail->Port = 465; // TCP port to connect to
 
             $mail->setFrom('contato@cadernetadeobra.com.br', 'Contato - Caderneta de Obras');
-            $mail->addAddress($destinatario); // Add a recipient, Name is optional
+            if($admin){
+                $mail->addAddress("assearaalfenas@hotmail.com"); // Add a recipient, Name is optional
+                $mail->addAddress("assearasite@hotmail.com"); // Add a recipient, Name is optional
+            }else{
+                $mail->addAddress($destinatario); // Add a recipient, Name is optional
+            }
             $mail->addReplyTo('contato@cadernetadeobra.com.br', 'Contato - Caderneta de Obras');
             // print_r($_FILES['file']); exit;
 

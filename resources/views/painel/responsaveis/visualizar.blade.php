@@ -80,6 +80,8 @@
                     <thead>
                         <tr>
                             <th>Data</th>
+                            <th>Proprietário</th>
+                            <th>Livro n°</th>
                             <th>Aprovado</th>
                             <th></th>
                         </tr>
@@ -89,6 +91,8 @@
                         @foreach($responsavel->ordens as $ordem)
                             <tr>
                                 <td>{{date("d/m/Y H:i:s", strtotime($ordem->created_at))}}</td>
+                                <td>{{$ordem->proprietario}}</td>
+                                <td>{{$ordem->numero}}</td>
                                 <td>
                                     @if($ordem->aprovado)
                                         Sim
@@ -98,10 +102,13 @@
                                 </td>
                                 <td>
                                     <a href="{{asset($ordem->caminho)}}" target="_blank" class="btn btn-primary" role="button">Visualizar</a>
-                                    @if(!$ordem->aprovado)
+                                    @if($ordem->aprovado == 0)
                                         <a href="{{route('painel.ordem.aprovar', ['ordem' => $ordem])}}" id="" class="btn btn-success" role="button">Aprovar</a>
+                                        <a href="{{route('painel.ordem.reprovar', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Reprovar</a>
+                                    @elseif($ordem->aprovado == 1)
+                                        <a href="{{route('painel.ordem.reprovar', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Reprovar</a>
                                     @else
-                                        <a href="{{route('painel.ordem.bloquear', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Bloquear</a>
+                                        <a href="{{route('painel.ordem.aprovar', ['ordem' => $ordem])}}" id="" class="btn btn-success" role="button">Aprovar</a>
                                     @endif
                                 </td>
                             </tr>

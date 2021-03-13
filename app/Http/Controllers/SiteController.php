@@ -87,10 +87,11 @@ class SiteController extends Controller
             
         }
 
+
         $file = file_get_contents('site/emails/novo_registro.html');
         $file = str_replace("{{nome}}", $engenheiro->nome, $file);
         $file = str_replace("{{titulo}}", $engenheiro->titulo, $file);
-        Email::enviar($file, "Novo registro", "gusouza980@gmail.com");
+        Email::enviar($file, "Novo registro", "", true);
 
         session()->flash("sucesso", "Recebemos seu pedido de cadastro. Por favor, aguarde enquanto verificamos seus dados para aprová-lo.");
         return redirect()->route("site.login");

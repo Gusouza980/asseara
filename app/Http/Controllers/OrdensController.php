@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ordem;
+use App\Classes\Email;
 
 class OrdensController extends Controller
 {
@@ -26,6 +27,10 @@ class OrdensController extends Controller
     public function aprovar(Ordem $ordem){
         $ordem->aprovado = 1;
         $ordem->save();
+        $file = file_get_contents('site/emails/ordem_aprovada.html');
+        $file = str_replace("{{nome}}", $ordem->responsavel->nome, $file);
+        $file = str_replace("{{numero}}", $ordem->numero, $file);
+        $teste = Email::enviar($file, "Ordem Aprovada", $ordem->responsavel->email);
         toastr()->success("Emissão aprovada com sucesso!");
         return redirect()->back();
     }
@@ -33,6 +38,10 @@ class OrdensController extends Controller
     public function reprovar(Ordem $ordem){
         $ordem->aprovado = -1;
         $ordem->save();
+        $file = file_get_contents('site/emails/ordem_reprovada.html');
+        $file = str_replace("{{nome}}", $ordem->responsavel->nome, $file);
+        $file = str_replace("{{numero}}", $ordem->numero, $file);
+        Email::enviar($file, "Ordem Reprovada", $ordem->responsavel->email);
         toastr()->success("Emissão reprovada com sucesso!");
         return redirect()->back();
     }

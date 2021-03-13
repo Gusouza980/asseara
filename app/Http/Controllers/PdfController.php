@@ -67,7 +67,7 @@ class PdfController extends Controller
 
         $file = file_get_contents('site/emails/nova_emissao.html');
         $file = str_replace("{{nome_responsavel}}", $responsavel->nome, $file);
-        Email::enviar($file, "Nova emissão", "gusouza980@gmail.com");
+        Email::enviar($file, "Nova emissão", "", true);
         //dd($result);
         session()->flash('sucesso', 'Sua emissão está em análise. Aguarde aprovação.');
         return redirect()->route('site.index');
