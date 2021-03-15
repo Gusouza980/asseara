@@ -22,7 +22,7 @@ class EngenheirosController extends Controller
         $responsavel->aprovado = 1;
         $responsavel->save();
         $file = file_get_contents('site/emails/registro_aprovado.html');
-        $file = str_replace("{{nome}}", $engenheiro->nome, $file);
+        $file = str_replace("{{nome}}", $responsavel->nome, $file);
         Email::enviar($file, "Registro Aprovado", $responsavel->email);
         toastr()->success("Engenheiro aprovado com sucesso!");
         return redirect()->back();
@@ -32,7 +32,7 @@ class EngenheirosController extends Controller
         $responsavel->aprovado = -1;
         $responsavel->save();
         $file = file_get_contents('site/emails/registro_reprovado.html');
-        $file = str_replace("{{nome}}", $engenheiro->nome, $file);
+        $file = str_replace("{{nome}}", $responsavel->nome, $file);
         Email::enviar($file, "Registro Reprovado", $responsavel->email);
         toastr()->success("Engenheiro aprovado com sucesso!");
         return redirect()->back();
