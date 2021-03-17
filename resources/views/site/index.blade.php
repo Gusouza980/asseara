@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($responsavel->ordens as $ordem)
+                    @foreach ($responsavel->ordens()->orderBy("created_at", "ASC")->get() as $ordem)
                         <tr>
                             <td>{{ date('d/m/Y H:i:s', strtotime($ordem->created_at)) }}</td>
                             <td>{{ $ordem->proprietario }}</td>

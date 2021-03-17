@@ -70,7 +70,61 @@
                                             </div>  
                                             <div class="mb-3 form-group col-12">
                                                 <label for="">Área Atuação - Sub Área de Atuação - Obra/Serviço - Complemento*</label>
-                                                <input type="text" class="form-control" name="atuacao" placeholder="" required>
+                                                <select class="form-select" name="atuacao">
+                                                    <option value="Ampliação - Agropecuário">Ampliação - Agropecuário</option>
+                                                    <option value="Ampliação - Comercial">Ampliação - Comercial</option>
+                                                    <option value="Ampliação - Comunitário">Ampliação - Comunitário</option>
+                                                    <option value="Ampliação - Extrativista">Ampliação - Extrativista</option>
+                                                    <option value="Ampliação - Habitacional">Ampliação - Habitacional</option>
+                                                    <option value="Ampliação - Industrial">Ampliação - Industrial</option>
+                                                    <option value="Ampliação - Serviços">Ampliação - Serviços</option>
+                                                    <option value="Ampliação - Outro">Ampliação - Outro</option>
+                                                    <option value="Demolição - Agropecuário">Demolição - Agropecuário</option>
+                                                    <option value="Demolição - Comercial">Demolição - Comercial</option>
+                                                    <option value="Demolição - Comunitário">Demolição - Comunitário</option>
+                                                    <option value="Demolição - Extrativista">Demolição - Extrativista</option>
+                                                    <option value="Demolição - Habitacional">Demolição - Habitacional</option>
+                                                    <option value="Demolição - Industrial">Demolição - Industrial</option>
+                                                    <option value="Demolição - Serviços">Demolição - Serviços</option>
+                                                    <option value="Demolição - Outro">Demolição - Outro</option>
+                                                    <option value="Loteamento - Agropecuário">Loteamento - Agropecuário</option>
+                                                    <option value="Loteamento - Comercial">Loteamento - Comercial</option>
+                                                    <option value="Loteamento - Comunitário">Loteamento - Comunitário</option>
+                                                    <option value="Loteamento - Extrativista">Loteamento - Extrativista</option>
+                                                    <option value="Loteamento - Habitacional">Loteamento - Habitacional</option>
+                                                    <option value="Loteamento - Industrial">Loteamento - Industrial</option>
+                                                    <option value="Loteamento - Serviços">Loteamento - Serviços</option>
+                                                    <option value="Loteamento - Outro">Loteamento - Outro</option>
+                                                    <option value="ME - Eventos - Agropecuário">ME - Eventos - Agropecuário</option>
+                                                    <option value="ME - Eventos - Comercial">ME - Eventos - Comercial</option>
+                                                    <option value="ME - Eventos - Comunitário">ME - Eventos - Comunitário</option>
+                                                    <option value="ME - Eventos - Extrativista">ME - Eventos - Extrativista</option>
+                                                    <option value="ME - Eventos - Habitacional">ME - Eventos - Habitacional</option>
+                                                    <option value="ME - Eventos - Industrial">ME - Eventos - Industrial</option>
+                                                    <option value="ME - Eventos - Serviços">ME - Eventos - Serviços</option>
+                                                    <option value="ME - Eventos - Outro">ME - Eventos - Outro</option>
+                                                    <option value="ME - Pq. Diversões - Agropecuário">ME - Pq. Diversões - Agropecuário</option>
+                                                    <option value="ME - Pq. Diversões - Comercial">ME - Pq. Diversões - Comercial</option>
+                                                    <option value="ME - Pq. Diversões - Comunitário">ME - Pq. Diversões - Comunitário</option>
+                                                    <option value="ME - Pq. Diversões - Serviços">ME - Pq. Diversões - Serviços</option>
+                                                    <option value="ME - Pq. Diversões - Outro">ME - Pq. Diversões - Outro</option>
+                                                    <option value="Projeto/Execução - Agropecuário">Projeto/Execução - Agropecuário</option>
+                                                    <option value="Projeto/Execução - Comercial">Projeto/Execução - Comercial</option>
+                                                    <option value="Projeto/Execução - Comunitário">Projeto/Execução - Comunitário</option>
+                                                    <option value="Projeto/Execução - Extrativista">Projeto/Execução - Extrativista</option>
+                                                    <option value="Projeto/Execução - Habitacional">Projeto/Execução - Habitacional</option>
+                                                    <option value="Projeto/Execução - Industrial">Projeto/Execução - Industrial</option>
+                                                    <option value="Projeto/Execução - Serviços">Projeto/Execução - Serviços</option>
+                                                    <option value="Projeto/Execução - Outro">Projeto/Execução - Outro</option>
+                                                    <option value="Outra - Agropecuário">Outra - Agropecuário</option>
+                                                    <option value="Outra - Comercial">Outra - Comercial</option>
+                                                    <option value="Outra - Comunitário">Outra - Comunitário</option>
+                                                    <option value="Outra - Extrativista">Outra - Extrativista</option>
+                                                    <option value="Outra - Habitacional">Outra - Habitacional</option>
+                                                    <option value="Outra - Industrial">Outra - Industrial</option>
+                                                    <option value="Outra - Serviços">Outra - Serviços</option>
+
+                                                </select>
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-9 col-lg-6">
                                                 <label for="">Endereço *</label>
