@@ -16,6 +16,11 @@ class PdfController extends Controller
     //
     public function criar(Request $request){
         // dd($request->all());
+        $ordem = Ordem::where([["numero", config("globals.rts")[$request->conselho] . " " .  trim($request->rt)], ["aprovado", "<>", -1]])->first();
+        if($ordem){
+            session()->flash('erro', 'Já existe uma ordem com este número em análise ou aprovada.');
+            return redirect()->back();
+        }
         $responsavel = Engenheiro::find(session()->get("engenheiro"));
 
         $data = $request->all();
