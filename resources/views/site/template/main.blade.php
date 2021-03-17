@@ -17,6 +17,16 @@
         <link href="{{asset('site/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('site/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
+        <meta property="og:url" content="https://cadernetadeobra.com.br">
+        <meta property="og:title" content="Caderneta de Obras - Asseara">
+        <meta property="og:site_name" content="Caderneta de Obras">
+        <meta property="og:description" content="Sistema para agilizar a emissão e gerenciamento de cadernetas de obra.">
+        <meta property="og:image" content="https://cadernetadeobra.com.br/site/images/asseara-logo-branca.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="1501"> /** PIXELS **/
+        <meta property="og:image:height" content="837"> /** PIXELS **/
+
         @yield("styles")
     </head>
 
