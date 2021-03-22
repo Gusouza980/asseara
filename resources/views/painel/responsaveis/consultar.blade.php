@@ -25,7 +25,7 @@
                             <th>Título</th>
                             <th>Registro</th>
                             <th>CPF</th>
-                            <th>Aprovado</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -38,10 +38,12 @@
                                 <td>{{$responsavel->registro}}</td>
                                 <td>{{$responsavel->cpf}}</td>
                                 <td>
-                                    @if($responsavel->aprovado)
-                                        Sim
+                                    @if($responsavel->aprovado == 1)
+                                        <span style="color:green;">Aprovado</span>
+                                    @elseif($responsavel->aprovado == 0)
+                                        <span class="text-primary">Em Análise</span>
                                     @else
-                                        Não
+                                        <span style="color:red;">Reprovado</span>
                                     @endif
                                 </td>
                                 <td>

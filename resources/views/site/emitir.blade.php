@@ -19,15 +19,15 @@
         <link href="{{asset('site/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
     </head>
 
-    <body>
-        <div class="account-pages y-">
+    <body style="background: url(/admin/images/banner-login.jpg);">
+        <div class="account-pages" style="background-color: rgba(0, 152, 218, 0.3);">
             <div class="container">
                 <div class="row justify-content-center align-items-center">
                     <div class="@yield('tamanhos')">
 
                         <div class="row my-3">
                             <div class="col-6">
-                                <h4>Emissão de Ordem</h4>
+                                <h4 class="text-white">Emissão de Ordem</h4>
                             </div>
                             <div class="col-6 text-end">
                                 <a name="" id="" class="btn btn-azul" href="{{route('site.index')}}" role="button">Voltar</a>
@@ -66,7 +66,7 @@
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
                                                 <label for="">Data de Conclusão (Prevista) *</label>
-                                                <input type="date" class="form-control" name="conclusao" value="{{date('Y-m-d')}}" required>
+                                                <input type="date" class="form-control" name="conclusao" value="{{date('Y-m-d')}}" min="{{date('Y-m-d')}}"  required>
                                             </div>  
                                             <div class="mb-3 form-group col-12">
                                                 <label for="">Área Atuação - Sub Área de Atuação - Obra/Serviço - Complemento*</label>
@@ -590,7 +590,7 @@
                             </div>
                         </form>
 
-                        <div class="mt-5 text-center">
+                        <div class="mt-5 text-center text-white">
                             
                             <div>
                                 

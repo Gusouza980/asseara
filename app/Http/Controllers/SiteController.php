@@ -51,10 +51,17 @@ class SiteController extends Controller
     }
 
     public function registrar(Request $request){
-        $request->validate([
-            'cpf' => 'unique:engenheiros,cpf',
-            'email' => 'unique:engenheiros,email'
-        ]);
+        $aprovados = Engenheiro::where("aprovado", 1)->get();
+        
+        if($aprovados->where("cpf", $request->cpf)->first()){
+            session()->flash("erro", "Já existe um usuário com o cpf informado.");
+            return redirect()->back();
+        }
+
+        if($aprovados->where("email", $request->email)->first()){
+            session()->flash("erro", "Já existe um usuário com o email informado.");
+            return redirect()->back();
+        }
 
         $engenheiro = new Engenheiro;
 

@@ -16,7 +16,7 @@
             <a name="" id="" class="btn btn-primary mb-3" href="{{route('painel.responsavel.aprovar', ['responsavel' => $responsavel])}}" role="button">Aprovar</a>
             <a name="" id="" class="btn btn-danger mb-3" href="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" role="button">Reprovar</a>
         @elseif($responsavel->aprovado == 1)
-            <a name="" id="" class="btn btn-danger mb-3" href="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" role="button">Provar</a>
+            <a name="" id="" class="btn btn-danger mb-3" href="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" role="button">Reprovar</a>
         @else
             <a name="" id="" class="btn btn-primary mb-3" href="{{route('painel.responsavel.aprovar', ['responsavel' => $responsavel])}}" role="button">Aprovar</a>
         @endif

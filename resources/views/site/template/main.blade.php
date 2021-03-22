@@ -30,8 +30,9 @@
         @yield("styles")
     </head>
 
-    <body>
-        <div class="account-pages">
+    <body style="background: url(/admin/images/banner-login.jpg);">
+        
+        <div class="account-pages" style="background-color: rgba(0, 152, 218, 0.3);">
             <div class="container">
                 <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
                     <div class="@yield('tamanhos')">
@@ -39,7 +40,7 @@
                         <div class="card overflow-hidden">
                             @yield("conteudo")
                         </div>
-                        <div class="mt-5 text-center">
+                        <div class="mt-5 text-center text-white">
                             
                             <div>
                                 
