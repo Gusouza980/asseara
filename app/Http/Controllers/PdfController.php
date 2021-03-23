@@ -26,9 +26,11 @@ class PdfController extends Controller
         $data = $request->all();
         \Date::setLocale('pt-br');
         $data["data_atual"] = \Date::now();
-
+        // $pdf = app()->make('dompdf.wrapper');
+        // $pdf->loadView('pdfs.pagina4', $data);
+        // return $pdf->stream();
         Storage::makeDirectory('site/pdfs/'.$responsavel->id);
-
+        
         $fileArray = array();
         $datadir = public_path() . "/site/pdfs/" . $responsavel->id . "/";
 
