@@ -94,10 +94,12 @@
                                 <td>{{$ordem->proprietario}}</td>
                                 <td>{{$ordem->numero}}</td>
                                 <td>
-                                    @if($ordem->aprovado)
+                                    @if($ordem->aprovado == 1)
                                         Sim
-                                    @else
+                                    @elseif($ordem->aprovado == -1)
                                         Não
+                                    @else
+                                        Em Análise
                                     @endif
                                 </td>
                                 <td>
