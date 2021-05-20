@@ -35,12 +35,14 @@ class OrdensController extends Controller
         return redirect()->back();
     }
 
-    public function reprovar(Ordem $ordem){
+    public function reprovar(Request $request, Ordem $ordem){
         $ordem->aprovado = -1;
+        $ordem->motivo = $request->motivo;
         $ordem->save();
         $file = file_get_contents('site/emails/ordem_reprovada.html');
         $file = str_replace("{{nome}}", $ordem->responsavel->nome, $file);
         $file = str_replace("{{numero}}", $ordem->numero, $file);
+        $file = str_replace("{{motivo}}", $ordem->motivo, $file);
         Email::enviar($file, "Ordem Reprovada", $ordem->responsavel->email);
         toastr()->success("Emissão reprovada com sucesso!");
         return redirect()->back();

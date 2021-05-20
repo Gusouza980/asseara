@@ -59,7 +59,7 @@ Route::middleware(['usuario'])->group(function () {
     Route::get('/sistema/ordens/aprovadas', [App\Http\Controllers\OrdensController::class, 'aprovadas'])->name("painel.ordem.aprovadas");
     Route::get('/sistema/ordens/reprovadas', [App\Http\Controllers\OrdensController::class, 'reprovadas'])->name("painel.ordem.reprovadas");
     Route::get('/sistema/ordem/aprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'aprovar'])->name("painel.ordem.aprovar");
-    Route::get('/sistema/ordem/reprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'reprovar'])->name("painel.ordem.reprovar");
+    Route::post('/sistema/ordem/reprovar/{ordem}', [App\Http\Controllers\OrdensController::class, 'reprovar'])->name("painel.ordem.reprovar");
 
     Route::get('/dashboard/usuarios/cadastro', [\App\Http\Controllers\UsuarioController::class, 'cadastro'])->name("painel.usuario.cadastro");
         Route::post('/dashboard/usuarios/cadastrar', [\App\Http\Controllers\UsuarioController::class, 'cadastrar'])->name("painel.usuario.cadastrar");

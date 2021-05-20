@@ -43,11 +43,11 @@
                                 <td>{{$ordem->numero}}</td>
                                 <td>
                                     @if($ordem->aprovado == 1)
-                                        <span style="color:green;">Aprovado</span>
+                                        <span style="color:green; padding: 10px 10px;">Aprovado</span>
                                     @elseif($ordem->aprovado == 0)
-                                        <span class="text-primary">Aguardando Aprovação</span>
+                                        <span style="padding: 10px 10px;" class="text-primary">Aguardando Aprovação</span>
                                     @else
-                                        <span style="color:red;">Reprovado</span>
+                                        <span style="color:red; padding: 10px 10px;" data-toggle="tooltip" data-placement="top" title="{{$ordem->motivo}}">Reprovado</span>
                                     @endif
                                 </td>
                                 <td>
@@ -68,9 +68,9 @@
                                     <a href="{{asset($ordem->caminho)}}" target="_blank" class="btn btn-primary" role="button">Visualizar</a>
                                     @if($ordem->aprovado == 0)
                                         <a href="{{route('painel.ordem.aprovar', ['ordem' => $ordem])}}" id="" class="btn btn-success" role="button">Aprovar</a>
-                                        <a href="{{route('painel.ordem.reprovar', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Reprovar</a>
+                                        <a  data-bs-toggle="modal" data-bs-target="#modalReprovar{{$ordem->id}}"  id="" class="btn btn-danger" role="button">Reprovar</a>
                                     @elseif($ordem->aprovado == 1)
-                                        <a href="{{route('painel.ordem.reprovar', ['ordem' => $ordem])}}" id="" class="btn btn-danger" role="button">Reprovar</a>
+                                        <a  data-bs-toggle="modal" data-bs-target="#modalReprovar{{$ordem->id}}"  id="" class="btn btn-danger" role="button">Reprovar</a>
                                     @else
                                         <a href="{{route('painel.ordem.aprovar', ['ordem' => $ordem])}}" id="" class="btn btn-success" role="button">Aprovar</a>
                                     @endif
@@ -83,7 +83,27 @@
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
+@foreach($ordens as $ordem)
+<div class="modal fade" id="modalReprovar{{$ordem->id}}" tabindex="-1" role="dialog" aria-labelledby="modalReprovar{{$ordem->id}}Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="{{route('painel.ordem.reprovar', ['ordem' => $ordem])}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="motivo">Motivo</label>
+                        <textarea class="form-control" name="motivo" id="motivo" rows="3"></textarea>
+                    </div>
+                    <div class="form-group text-end mt-3">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
 @endsection
 
 @section('scripts')
@@ -94,6 +114,7 @@
     <script src="https://cdn.datatables.net/plug-ins/1.10.10/sorting/datetime-moment.js"></script>
     <script>
         $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip()
             $.fn.dataTable.moment( 'DD/MM/YYYY HH:mm:ss' );    //Formatação com Hora
             $.fn.dataTable.moment('DD/MM/YYYY');    //Formatação sem Hor
             $('#datatable').DataTable( {
