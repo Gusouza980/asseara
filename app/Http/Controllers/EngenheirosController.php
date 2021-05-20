@@ -14,6 +14,21 @@ class EngenheirosController extends Controller
         return view("painel.responsaveis.consultar", ["responsaveis" => $responsaveis]);
     }
 
+    public function analise(){
+        $responsaveis = Engenheiro::where("aprovado", 0)->get();
+        return view("painel.responsaveis.consultar", ["responsaveis" => $responsaveis, "tipo" => "Em Análise"]);
+    }
+
+    public function aprovados(){
+        $responsaveis = Engenheiro::where("aprovado", 1)->get();
+        return view("painel.responsaveis.consultar", ["responsaveis" => $responsaveis, "tipo" => "Aprovadas"]);
+    }
+
+    public function reprovados(){
+        $responsaveis = Engenheiro::where("aprovado", -1)->get();
+        return view("painel.responsaveis.consultar", ["responsaveis" => $responsaveis, "tipo" => "Reprovadas"]);
+    }
+
     public function visualizar(Engenheiro $responsavel){
         return view("painel.responsaveis.visualizar", ["responsavel" => $responsavel]);
     }
@@ -28,11 +43,13 @@ class EngenheirosController extends Controller
         return redirect()->back();
     }
 
-    public function reprovar(Engenheiro $responsavel){
+    public function reprovar(Request $request, Engenheiro $responsavel){
         $responsavel->aprovado = -1;
+        $responsavel->motivo = $request->motivo;
         $responsavel->save();
         $file = file_get_contents('site/emails/registro_reprovado.html');
         $file = str_replace("{{nome}}", $responsavel->nome, $file);
+        $file = str_replace("{{motivo}}", $responsavel->motivo, $file);
         Email::enviar($file, "Registro Reprovado", $responsavel->email);
         toastr()->success("Engenheiro aprovado com sucesso!");
         return redirect()->back();

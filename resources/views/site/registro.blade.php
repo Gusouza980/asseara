@@ -21,7 +21,7 @@
 <div class="card-body pt-3"> 
     <div class="p-2">
         @include("includes.errors")
-        <form class="needs-validation" novalidate action="{{route('site.registrar')}}" method="POST" enctype="multipart/form-data">
+        <form id="form-registro" class="needs-validation" action="{{route('site.registrar')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
 
@@ -268,10 +268,11 @@
 
                 <div class="col-12 mt-3" id="div-comprovantes">
                     <div class="row mb-3">
-                        <div class="col-6 text-start">
+                        <div class="col-8 text-start">
                             <h5>Comprovantes de Registro</h5>
+                            <h6>(anexar frente e verso da Carteira Profissional - CAU/CFT/CONFEA)</h6>
                         </div>
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <input type="button" class="btn btn-azul" onclick="adiciona_input()" value="Adicionar"/>
                         </div>
                     </div>
@@ -282,8 +283,12 @@
                     </div>
                 </div>
                 
-                <div class="mt-4 d-grid">
-                    <button class="btn btn-azul waves-effect waves-light" type="submit">Registrar</button>
+                <div class="mt-4 d-grid" id="div-btn-registrar">
+                    <button class="btn btn-azul waves-effect waves-light" id="btn-registrar" type="submit">Registrar</button>
+                </div>
+
+                <div class="mt-4 text-center d-none" id="div-loading-registrar">
+                    <img src="{{asset('site/images/ajax-loading.gif')}}" width="50" alt="Ajax loading">
                 </div>
             </div>
             
@@ -319,6 +324,11 @@
         $('#telefone').mask('(00) 00000-0000');
         $('#cpf').mask('000.000.000-00');
         $('#cep').mask('00000-000');
+
+        $("#form-registro").submit(function(){
+            $("#div-btn-registrar").addClass("d-none");
+            $("#div-loading-registrar").removeClass("d-none");
+        });
     });
 </script>
 @endsection

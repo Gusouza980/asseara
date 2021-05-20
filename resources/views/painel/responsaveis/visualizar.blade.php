@@ -12,11 +12,12 @@
 @section('conteudo')
 <div class="row">
     <div class="col-12">
+        <a name="" id="" class="btn btn-primary mb-3" href="{{route('painel.responsaveis')}}" role="button">Voltar</a>
         @if($responsavel->aprovado == 0)
             <a name="" id="" class="btn btn-primary mb-3" href="{{route('painel.responsavel.aprovar', ['responsavel' => $responsavel])}}" role="button">Aprovar</a>
-            <a name="" id="" class="btn btn-danger mb-3" href="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" role="button">Reprovar</a>
+            <a name="" id="" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#modalReprovar" role="button">Reprovar</a>
         @elseif($responsavel->aprovado == 1)
-            <a name="" id="" class="btn btn-danger mb-3" href="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" role="button">Reprovar</a>
+            <a name="" id="" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#modalReprovar" role="button">Reprovar</a>
         @else
             <a name="" id="" class="btn btn-primary mb-3" href="{{route('painel.responsavel.aprovar', ['responsavel' => $responsavel])}}" role="button">Aprovar</a>
         @endif
@@ -39,6 +40,21 @@
         @endif
     </div>
 </div>
+
+@if($responsavel->aprovado == -1)
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body" style="overflow-x: scroll; font-size: 14px;">
+                    <h5>Motivo da Reprovação</h5>
+                    <hr>
+                    <p>{{$responsavel->motivo}}</p>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+@endif
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -117,6 +133,26 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalReprovar" tabindex="-1" role="dialog" aria-labelledby="modalReprovarLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="{{route('painel.responsavel.reprovar', ['responsavel' => $responsavel])}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="motivo">Motivo</label>
+                        <textarea class="form-control" name="motivo" id="motivo" rows="3"></textarea>
+                    </div>
+                    <div class="form-group text-end mt-3">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

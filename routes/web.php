@@ -48,9 +48,12 @@ Route::middleware(['usuario'])->group(function () {
 
     // Rotas de responsáveis
     Route::get('/sistema/responsaveis', [App\Http\Controllers\EngenheirosController::class, 'index'])->name("painel.responsaveis");
+    Route::get('/sistema/responsaveis/analise', [App\Http\Controllers\EngenheirosController::class, 'analise'])->name("painel.responsaveis.analise");
+    Route::get('/sistema/responsaveis/aprovados', [App\Http\Controllers\EngenheirosController::class, 'aprovados'])->name("painel.responsaveis.aprovados");
+    Route::get('/sistema/responsaveis/reprovados', [App\Http\Controllers\EngenheirosController::class, 'reprovados'])->name("painel.responsaveis.reprovados");
     Route::get('/sistema/responsavel/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'visualizar'])->name("painel.responsavel.visualizar");
     Route::get('/sistema/responsavel/aprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'aprovar'])->name("painel.responsavel.aprovar");
-    Route::get('/sistema/responsavel/reprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'reprovar'])->name("painel.responsavel.reprovar");
+    Route::post('/sistema/responsavel/reprovar/{responsavel}', [App\Http\Controllers\EngenheirosController::class, 'reprovar'])->name("painel.responsavel.reprovar");
 
     Route::get('/sistema/ordens/analise', [App\Http\Controllers\OrdensController::class, 'analise'])->name("painel.ordem.analise");
     Route::get('/sistema/ordens/aprovadas', [App\Http\Controllers\OrdensController::class, 'aprovadas'])->name("painel.ordem.aprovadas");

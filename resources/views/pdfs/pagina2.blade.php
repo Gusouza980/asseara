@@ -42,7 +42,7 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
     <span style="font-family: Calibri, sans-serif;font-size: 11px; position: absolute; top: 825px; left: 5px;">Dispõe sobre a adoção do Livro de Ordem de obra e serviços das profissões abrangidas pelo Sistema Confea/Crea.</span>
 
     <div style="position: absolute; top: 850px; width: 100%; background-color: #F2F2F2; height: 150px; text-align: right; padding-right: 30px;">
-        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 30px; left: 30px;">{{$atuacao}}</span>
+        <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 30px; left: 30px;">{{mb_strtoupper($atuacao, 'UTF-8')}}</span>
         <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 70px; left: 30px;">Proprietário: {{$nome_proprietario}}</span>
         <span style="font-family: Calibri, sans-serif;font-weight: bold; font-size: 14px; position: absolute; top: 110px; left: 30px;">Responsável Técnico: {{$responsavel->nome}}</span>
     </div>

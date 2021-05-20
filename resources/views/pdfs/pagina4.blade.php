@@ -52,7 +52,7 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
     <div style="position: absolute; top: 190px; left: 40px; width: 662px;">
         <div style="position: absolute; top: 5px; width: 100%; height: 45px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Área Atuação - Sub Área de atuação - Obra/Serviço - Complemento:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 25px; left: 5px; font-weight: bold;">{{$atuacao}}</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 25px; left: 5px; font-weight: bold;">{{mb_strtoupper($atuacao, 'UTF-8')}}</span>
         </div>
     </div>
 
@@ -154,7 +154,7 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Título:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$titulo_autor}}</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{mb_strtoupper($titulo_autor, 'UTF-8')}}</span>
         </div>
     </div>
 
@@ -218,7 +218,7 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
         </div>
         <div style="position: absolute; top: 5px; width: 220px; height: 35px; left: 440px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Título:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$responsavel->titulo}}</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{mb_strtoupper($responsavel->titulo, 'UTF-8')}}</span>
         </div>
     </div>
 

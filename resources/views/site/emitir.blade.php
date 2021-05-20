@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         @include("includes.errors")
-                        <form class="form-horizontal" action="{{route('pdf.criar')}}" method="POST" enctype="multipart/form-data">
+                        <form class="form-horizontal" id="form-ordem" action="{{route('pdf.criar')}}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="card overflow-hidden">
@@ -46,7 +46,7 @@
                                                 <label for="">Sequência ao Livro de Ordem n° (Opcional)</label>
                                                 <input type="text"
                                                     class="form-control" name="sequencia" placeholder="">
-                                                <small>Preencha em caso da ordem ser sequência de uma anterior</small>
+                                                <small>SOMENTE preencha em caso da ordem ser sequência de uma anterior</small>
                                             </div> 
                                             <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
                                                 <label for="">Conselho de Origem *</label>
@@ -57,8 +57,9 @@
                                                 </select>
                                             </div> 
                                             <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
-                                                <label for="">Documento de RT (Apenas Números) *</label>
+                                                <label for="">Documento de RT (n° da ART/RRT/TRT) *</label>
                                                 <input type="text" class="form-control" name="rt" placeholder="" required>
+                                                <small>(n° completo incluindo letras, números e símbolos)</small>
                                             </div> 
                                             <div class="mb-3 form-group col-12 col-md-6 col-lg-4">
                                                 <label for="">Data de Início *</label>
@@ -71,7 +72,7 @@
                                             <div class="mb-3 form-group col-12">
                                                 <label for="">Área Atuação - Sub Área de Atuação - Obra/Serviço - Complemento*</label>
                                                 <select class="form-select" name="atuacao">
-                                                    <option value="Ampliação - Agropecuário">Ampliação - Agropecuário</option>
+                                                    <option value="Ampliação - Agropecuário" selected>Ampliação - Agropecuário</option>
                                                     <option value="Ampliação - Comercial">Ampliação - Comercial</option>
                                                     <option value="Ampliação - Comunitário">Ampliação - Comunitário</option>
                                                     <option value="Ampliação - Extrativista">Ampliação - Extrativista</option>
@@ -123,7 +124,6 @@
                                                     <option value="Outra - Habitacional">Outra - Habitacional</option>
                                                     <option value="Outra - Industrial">Outra - Industrial</option>
                                                     <option value="Outra - Serviços">Outra - Serviços</option>
-
                                                 </select>
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-9 col-lg-6">
@@ -484,9 +484,10 @@
                                                     class="form-control" name="registro_autor" placeholder="" required>
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-4 col-lg-4">
-                                                <label for="">Documento de RT *</label>
+                                                <label for="">Documento de RT * (n° da ART/RRT/TRT)</label>
                                                 <input type="text"
                                                     class="form-control" name="documento_autor" placeholder="" required>
+                                                <small>(n° completo incluindo letras, números e símbolos)</small>
                                             </div>
                                             <div class="mb-3 form-group col-12 col-md-4 col-lg-4">
                                                 <label for="">Inscrição Municipal</label>
@@ -580,9 +581,12 @@
                                         </div>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-12 text-center">
+                                            <div class="col-12 text-center" id="div-btn-emitir">
                                                 <button type="submit" class="btn btn-azul px-3">Emitir</button>
                                             </div>
+                                        </div>
+                                        <div class="mt-4 text-center d-none" id="div-loading-emitir">
+                                            <img src="{{asset('site/images/ajax-loading.gif')}}" width="50" alt="Ajax loading">
                                         </div>
                                     </div>
 
@@ -633,6 +637,16 @@
                 $('.telefone').mask('(00) 00000-0000');
                 //$('.cpf').mask('000.000.000-00');
                 $('.cep').mask('00000-000');
+
+                $("#form-ordem").submit(function(){
+                    $("#div-btn-emitir").addClass("d-none");
+                    $("#div-loading-emitir").removeClass("d-none");
+                    $("input[type=text]").each(function(){
+                        if(this.name != "_token" && this.name != "atuacao"){
+                            this.value = this.value.toUpperCase();      
+                        }    
+                    });
+                });
             });
         </script>
     </body>

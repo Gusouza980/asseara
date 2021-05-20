@@ -11,6 +11,9 @@
 @endsection
 
 @section('botoes')
+<a name="" id="" class="btn btn-primary" href="{{route('painel.responsaveis.analise')}}" role="button">Em Análise</a>
+<a name="" id="" class="btn btn-success ml-3" href="{{route('painel.responsaveis.aprovados')}}" role="button">Aprovados</a>
+<a name="" id="" class="btn btn-danger ml-3" href="{{route('painel.responsaveis.reprovados')}}" role="button">Reprovados</a>
 @endsection
 
 @section('conteudo')

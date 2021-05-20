@@ -54,8 +54,8 @@ class PdfController extends Controller
         $result = shell_exec($cmd);
 
         $ordem = new Ordem;
-        $ordem->proprietario = $request->nome_proprietario;
-        $ordem->numero = config("globals.rts")[$request->conselho] . " " .  $request->rt;
+        $ordem->proprietario = strtoupper($request->nome_proprietario);
+        $ordem->numero = strtoupper(config("globals.rts")[$request->conselho] . " " .  $request->rt);
         $ordem->engenheiro_id = $responsavel->id;
         $ordem->caminho = $caminho;
         $ordem->save();

@@ -47,7 +47,7 @@ $responsavel = \App\Models\Engenheiro::find(session()->get("engenheiro"));
         </div>
         <div style="position: absolute; top: 5px; width: 73%; left: 27%; height: 35px; border: 1px solid #d6d6d6;font-size: 12px;background-color: white;">
             <span style="font-family: Calibri, sans-serif;position: absolute; top: 3px; left: 5px;">Área Atuação - Sub Área de atuação - Obra/Serviço - Complemento:</span>
-            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{$atuacao}}</span>
+            <span style="font-family: Calibri, sans-serif;position: absolute; top: 18px; left: 5px; font-weight: bold;">{{mb_strtoupper($atuacao, 'UTF-8')}}</span>
         </div>
     </div>
 

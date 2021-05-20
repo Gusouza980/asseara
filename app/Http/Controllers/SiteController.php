@@ -67,18 +67,18 @@ class SiteController extends Controller
 
         $engenheiro->cpf = $request->cpf;
         $engenheiro->senha = Hash::make($request->senha);
-        $engenheiro->nome = $request->nome;
-        $engenheiro->telefone = $request->telefone;
-        $engenheiro->titulo = $request->titulo;
-        $engenheiro->registro = $request->registro;
-        $engenheiro->inscricao = $request->inscricao;
-        $engenheiro->rua = $request->rua;
-        $engenheiro->numero = $request->numero;
-        $engenheiro->complemento = $request->complemento;
-        $engenheiro->cidade = $request->cidade;
-        $engenheiro->uf = $request->uf;
+        $engenheiro->nome = strtoupper($request->nome);
+        $engenheiro->telefone = strtoupper($request->telefone);
+        $engenheiro->titulo = strtoupper($request->titulo);
+        $engenheiro->registro = strtoupper($request->registro);
+        $engenheiro->inscricao = strtoupper($request->inscricao);
+        $engenheiro->rua = strtoupper($request->rua);
+        $engenheiro->numero = strtoupper($request->numero);
+        $engenheiro->complemento = strtoupper($request->complemento);
+        $engenheiro->cidade = strtoupper($request->cidade);
+        $engenheiro->uf = strtoupper($request->uf);
         $engenheiro->email = $request->email;
-        $engenheiro->cep = $request->cep;
+        $engenheiro->cep = strtoupper($request->cep);
 
         $engenheiro->save();
 
