@@ -109,7 +109,7 @@ class SiteController extends Controller
     }
 
     public function senha_temporaria(Request $request){
-        $responsavel = Engenheiro::where("cpf", $request->cpf)->first();
+        $responsavel = Engenheiro::where([["cpf", $request->cpf], ["aprovado", true]])->first();
         if($responsavel){
             $nova_senha = Str::random(6);
             $responsavel->senha = Hash::make($nova_senha);
