@@ -44,13 +44,27 @@ class EngenheirosController extends Controller
     }
 
     public function reprovar(Request $request, Engenheiro $responsavel){
+        $anteriormente_aprovado = false;
+        if($responsavel->aprovado == 1){
+            $anteriormente_aprovado = true;
+        }
         $responsavel->aprovado = -1;
         $responsavel->motivo = $request->motivo;
         $responsavel->save();
+
         $file = file_get_contents('site/emails/registro_reprovado.html');
         $file = str_replace("{{nome}}", $responsavel->nome, $file);
         $file = str_replace("{{motivo}}", $responsavel->motivo, $file);
         Email::enviar($file, "Registro Reprovado", $responsavel->email);
+
+        if($anteriormente_aprovado){
+            $file = file_get_contents('site/emails/registro_reprovado_secretaria.html');
+            $file = str_replace("{{nome}}", $responsavel->nome, $file);
+            $file = str_replace("{{cpf}}", $responsavel->cpf, $file);
+            $file = str_replace("{{motivo}}", $responsavel->motivo, $file);
+            Email::enviar($file, "Registro Reprovado", "katiaiunes@alfenas.mg.gov.br");
+        }
+
         toastr()->success("Engenheiro aprovado com sucesso!");
         return redirect()->back();
     }

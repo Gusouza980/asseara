@@ -19,7 +19,7 @@ class UsuarioSeeder extends Seeder
         DB::table('usuarios')->insert([
             'nome' => 'Administrador',
             'email' => 'assearaalfenas@hotmail.com',
-            'senha' => Hash::make('AssearaAdmin123@'),
+            'senha' => Hash::make('12345'),
             'usuario' => 'admin',
             'acesso' => 0
         ]);
