@@ -51,6 +51,10 @@ class SiteController extends Controller
     }
 
     public function registrar(Request $request){
+        $this->validate($request, [
+            'captcha' => 'required|captcha'
+        ]);
+        
         $aprovados = Engenheiro::where("aprovado", 1)->get();
         
         if($aprovados->where("cpf", $request->cpf)->first()){

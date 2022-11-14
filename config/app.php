@@ -167,6 +167,7 @@ return [
          */
         Barryvdh\DomPDF\ServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
+        Igoshev\Captcha\Providers\CaptchaServiceProvider::class,
         /*
          * Application Service Providers...
          */
